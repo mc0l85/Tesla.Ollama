@@ -34,7 +34,9 @@ log_info()  { echo -e "  $1"; }
 # --- Model List ---
 ALL_MODELS=(
     "c_qwen3-30b-a3b-200k"
+    "c_qwen3-30b-a3b-144k"
     "c_glm47-flash-198k"
+    "c_glm47-flash-128k"
     "c_gemma3-27b-128k"
     "c_medgemma-27b-128k"
     "c_qwen3-14b-40k"
