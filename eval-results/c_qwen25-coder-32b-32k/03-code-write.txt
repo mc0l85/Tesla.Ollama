@@ -1,7 +1,7 @@
 ```python
 def merge_sorted(list1, list2):
     """
-    Merge two sorted lists into a single sorted list.
+    Merges two sorted lists into a single sorted list.
     
     Args:
     list1 (List[int]): First sorted list.

@@ -1,0 +1,12 @@
+```python
+from itertools import permutations
+
+people = ['Alice', 'Bob', 'Carol', 'Dave', 'Eve']
+for order in permutations(people):
+    if (order[1] <= order[3] or order[2] <= order[3]) and \
+       order[0] != 'Bob' and order[4] != 'Bob' and \
+       abs(order.index('Alice') - order.index('Carol')) == 1 and \
+       ('Eve' == order[0] or 'Eve' == order[4]) and \
+       abs(order.index('Alice') - order.index('Carol')) == 2:
+        print(order)
+```

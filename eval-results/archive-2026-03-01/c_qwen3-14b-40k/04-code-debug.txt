@@ -1,0 +1,53 @@
+The issue with the `flatten` function lies in the condition:
+
+```python
+if type(item) == list:
+```
+
+### ❌ What's wrong:
+This check is **too restrictive**. It only checks if the item is **exactly** a `list` type, but it **does not handle other iterable types** like tuples, sets, or even generators. In the test case:
+
+```python
+flatten([1, (2, 3), [4, [5]]])
+```
+
+The element `(2, 3)` is a **tuple**, not a `list`, so the `if type(item) == list:` condition is **not triggered**, and the tuple is **not flattened** — it's simply **appended to the result** as-is.
+
+### 🔍 Expected behavior:
+The function should **recursively flatten all nested iterables**, regardless of their type (e.g., lists, tuples, etc.).
+
+### ✅ Corrected version:
+To fix the issue, we should check whether the item is **an iterable** (but not a string — see below), and then recursively flatten it. Here's the corrected function:
+
+```python
+def flatten(nested_list):
+    result = []
+    for item in nested_list:
+        # Check if the item is an iterable (but not a string)
+        # We use `iter()` to test for iterability
+        try:
+            iter(item)
+        except TypeError:
+            # Not an iterable, append it as-is
+            result.append(item)
+        else:
+            # If it's a string, we don't want to flatten it
+            if isinstance(item, str):
+                result.append(item)
+            else:
+                result.extend(flatten(item))
+    return result
+
+# Test case
+print(flatten([1, (2, 3), [4, [5]]]))  # Now outputs: [1, 2, 3, 4, 5]
+```
+
+### 📌 Key improvements:
+- **Iterability check** using `iter(item)` allows us to detect any iterable (like tuples, lists, etc.).
+- **String handling**: We avoid flattening strings (e.g., `"hello"` should not become `['h', 'e', 'l', 'l', 'o']`), so we explicitly check with `isinstance(item, str)` and append them as-is.
+- **Generalization**: The function now works with any iterable nesting, not just lists.
+
+### ✅ Example:
+```python
+print(flatten([1, (2, 3), [4, [5]], {6, 7}]))  # Output: [1, 2, 3, 4, 5, 6, 7]
+```

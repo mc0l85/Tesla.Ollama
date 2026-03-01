@@ -1,0 +1,37 @@
+{
+  "books": [
+    {
+      "title": "The Midnight Library",
+      "author": "Matt Haig",
+      "year": 2020,
+      "price": 12.99,
+      "genres": [
+        "fiction",
+        "philosophy"
+      ],
+      "in_stock": true
+    },
+    {
+      "title": "Educated",
+      "author": "Tara Westover",
+      "year": 2018,
+      "price": 15.50,
+      "genres": [
+        "memoir",
+        "education"
+      ],
+      "in_stock": false
+    },
+    {
+      "title": "Sapiens: A Brief History of Humankind",
+      "author": "Yuval Noah Harari",
+      "year": 2011,
+      "price": 18.75,
+      "genres": [
+        "nonfiction",
+        "history"
+      ],
+      "in_stock": true
+    }
+  ]
+}

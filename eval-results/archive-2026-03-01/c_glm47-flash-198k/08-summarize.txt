@@ -1,0 +1,3 @@
+*   Discovered as a bacterial immune system and later reprogrammed by Jennifer Doudna and Emmanuelle Charpentier to cut DNA at specific locations, earning them the 2020 Nobel Prize in Chemistry.
+*   The technology has been widely applied to agriculture, medicine, and basic research, yet ethical concerns regarding germline editing remain a significant issue following the controversial 2018 gene-edited babies case.
+*   Despite these concerns, the technology continues to generate massive commercial investment, signaling strong confidence in its therapeutic potential.

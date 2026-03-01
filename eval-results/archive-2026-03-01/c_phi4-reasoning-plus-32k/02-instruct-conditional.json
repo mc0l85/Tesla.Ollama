@@ -1,0 +1,1 @@
+{"model":"c_phi4-reasoning-plus-32k","created_at":"2026-03-01T06:02:22.361530254Z","message":{"role":"assistant","content":"Paris"},"done":true,"done_reason":"stop","total_duration":346092128,"load_duration":80472079,"prompt_eval_count":66,"prompt_eval_duration":201519039,"eval_count":2,"eval_duration":61197819}

@@ -13,7 +13,7 @@
       "author": "Harper Lee",
       "year": 1960,
       "price": 14.50,
-      "genres": ["Classic", "Fiction", "Coming-of-age"],
+      "genres": ["Classic", "Fiction"],
       "in_stock": true
     },
     {
@@ -21,8 +21,8 @@
       "author": "George Orwell",
       "year": 1949,
       "price": 9.99,
-      "genres": ["Dystopian", "Fiction", "Political"],
-      "in_stock": false
+      "genres": ["Dystopian", "Fiction"],
+      "in_stock": true
     }
   ]
 }

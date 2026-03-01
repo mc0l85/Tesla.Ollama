@@ -1,39 +1,5 @@
-Let's generate bullet points.
+• CRISPR-Cas9 was discovered as a bacterial immune mechanism and reprogrammed in 2012 by Jennifer Doudna and Emmanuelle Charpentier to cut DNA at precise locations—a breakthrough that earned them the 2020 Nobel Prize in Chemistry.
 
-We'll produce 3 bullet points, each capturing a distinct key idea. Let's produce exactly 3 bullet points that capture distinct key ideas from the passage.
+• The technology has been widely applied across fields, including agriculture (developing disease-resistant crops), medicine (FDA-approved CRISPR therapy for sickle cell disease), and basic research (systematically studying gene function).
 
-Observing the passage:
-
-- Key idea 1: The development of CRISPR-Cas9 revolutionized molecular biology. It was discovered originally as a bacterial immune system that defends against viruses, then reprogrammed to cut DNA at specific locations by researchers Doudna and Charpentier, with Nobel Prize in 2020.
-
-- Key idea 2: CRISPR applications: used in agriculture, medicine (FDA approved therapy for sickle cell disease), and basic research. Ethical concerns remain especially regarding germline editing which are modifications inherited by future generations, referencing the case of He Jiankui, etc.
-
-- Key idea 3: Despite ethical issues, investment in CRISPR-based startups is high, with over $5 billion investment in 2023, indicating strong commercial confidence in CRISPR's therapeutic potential.
-
-I'll produce bullet points with exactly 3 bullet points, each capturing distinct key idea.
-
-I'll produce a bullet list with exactly 3 bullet points. I'll produce exact wording.
-
-I'll produce bullet list in 3 bullet points.
-
-I'll produce a list with 3 bullet points, each bullet being a separate sentence.
-
-I'll produce a bullet list with exactly 3 bullet points: one for scientific revolution, one for applications and ethical concerns, one for commercial investment.
-
-I'll produce in exactly 3 bullet points, with clear, distinct key ideas.
-
-I'll produce bullet points as text lines starting with dash bullet points.
-
-I'll produce bullet points:
-
-I'll produce:
-
-• CRISPR-Cas9, originally a bacterial immune system, has been reprogrammed to cut DNA at specific sites, earning Jennifer Doudna and Emmanuelle Charpentier the Nobel Prize in Chemistry in 2020.
-
-• The technology has wide-ranging applications—from creating disease-resistant crops and FDA-approved therapies for diseases such as sickle cell disease, to advancing basic genetic research—while raising ethical concerns about germline modifications, highlighted by the 2018 controversy surrounding gene-edited babies.
-
-• Despite ethical issues, commercial confidence in CRISPR's therapeutic potential remains strong, as evidenced by over $5 billion invested in CRISPR-based startups in 2023.
-
-I'll produce exactly 3 bullet points each capturing distinct key idea.
-
-I'll produce bullet
+• Despite its potential, ethical concerns—especially regarding germline editing, highlighted by He Jiankui’s 2018 gene-edited babies—persist, yet commercial investment in CRISPR startups exceeded $5 billion in 2023, showing strong confidence in its therapeutic promise.

@@ -1,31 +1,34 @@
 We are given the following information:
 
-- Field A produced **twice as much wheat** as Field B.
-- Field C produced **10 tons more** than Field B.
-- The **total harvest** from all three fields is **110 tons**.
+- Field A produced **twice as much wheat as Field B**.
+- Field C produced **10 tons more than Field B**.
+- The **total harvest from all three fields was 110 tons**.
 
 ---
 
 ### Step 1: Assign a variable to the unknown quantity
+Let the amount of wheat produced by **Field B** be:
 
-Let’s let:
-
-- $ x $ = the amount of wheat produced by **Field B** (in tons).
-
-Then:
-
-- Field A produced $ 2x $ tons (twice as much as Field B),
-- Field C produced $ x + 10 $ tons (10 tons more than Field B).
+$$
+x \text{ tons}
+$$
 
 ---
 
-### Step 2: Set up the equation for the total harvest
+### Step 2: Express the production of the other fields in terms of $ x $
 
-The total harvest is the sum of the harvests from all three fields:
+- **Field A**: $ 2x $ (twice as much as Field B)
+- **Field C**: $ x + 10 $ (10 tons more than Field B)
+
+---
+
+### Step 3: Set up the equation for the total harvest
 
 $$
-\text{Field A} + \text{Field B} + \text{Field C} = \text{Total}
+\text{Field A} + \text{Field B} + \text{Field C} = 110
 $$
+
+Substitute the expressions:
 
 $$
 2x + x + (x + 10) = 110
@@ -33,41 +36,41 @@ $$
 
 ---
 
-### Step 3: Simplify the equation
+### Step 4: Simplify the equation
 
 $$
 2x + x + x + 10 = 110
 $$
-
 $$
 4x + 10 = 110
 $$
 
 ---
 
-### Step 4: Solve for $ x $
+### Step 5: Solve for $ x $
 
 $$
-4x = 110 - 10 = 100
+4x = 110 - 10
 $$
-
 $$
-x = \frac{100}{4} = 25
+4x = 100
+$$
+$$
+x = 25
 $$
 
 ---
 
-### Step 5: Find the harvest from each field
+### Step 6: Find the production of each field
 
-- Field B: $ x = 25 $ tons
-- Field A: $ 2x = 2 \times 25 = 50 $ tons
-- Field C: $ x + 10 = 25 + 10 = 35 $ tons
+- **Field B**: $ x = 25 $ tons
+- **Field A**: $ 2x = 2 \times 25 = 50 $ tons
+- **Field C**: $ x + 10 = 25 + 10 = 35 $ tons
 
 ---
 
 ### ✅ Final Answer:
 
-- **Field A**: 50 tons  
-- **Field B**: 25 tons  
-- **Field C**: 35 tons  
-- **Total**: $ 50 + 25 + 35 = 110 $ tons ✅
+- **Field A**: **50 tons**
+- **Field B**: **25 tons**
+- **Field C**: **35 tons**

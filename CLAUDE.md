@@ -70,20 +70,19 @@ Common parameters across all modelfiles:
 
 Temperature varies by model purpose: 0.1 for structured tasks (lfm2), 0.7 for general (qwen3), 1.0 for creative (gemma3).
 
-## Model Fleet (ranked by eval score)
+## Model Fleet (ranked by eval score, 2026-03-01)
 
 | Model | Score | Gen t/s | Context | GPU% | Best For |
 |---|---|---|---|---|---|
-| c_qwen3-14b-40k | 9.0 | 25 | 40K | 100% | Default general-purpose |
-| c_lfm2-24b-a2b-32k | 8.9 | 67 | 32K | 100% | Speed-critical, pipelines |
-| c_nemotron-3-nano-30b-128k | 8.4 | ~10 | 128K | 61% | Technical writing, long-context analysis |
-| c_glm47-flash-198k | 7.9 | 13 | 200K | 89% | Long-context generalist |
-| c_qwen3-30b-a3b-200k | 7.0 | 19 | 200K | 100% | Extraction (200K ingestion) |
-| c_gemma3-27b-128k | 6.7 | 13 | 128K | 100% | Creative writing (no tool calling) |
-| c_phi4-reasoning-plus-32k | 4.1* | 16 | 32K | 100% | Deep reasoning (needs generous num_predict) |
-| c_qwen25-coder-32b-32k | 6.7 | 12 | 32K | 100% | Code generation only |
-
-*phi4-reasoning scored low due to eval token budget truncation, not model quality. Eval limits have been increased to 1500-3000. Re-eval needed.
+| c_qwen3-14b-40k | 8.8 | 25 | 40K | 100% | Default general-purpose |
+| c_glm47-flash-198k | 8.6 | 17 | 198K | 89% | Long-context generalist |
+| c_nemotron-3-nano-30b-128k | 8.6 | 13 | 128K | 62% | Technical writing, creative, long-context |
+| c_qwen3-30b-a3b-200k | 7.9 | 23 | 200K | 91% | Max context extraction (200K) |
+| c_lfm2-24b-a2b-32k | 7.9 | 72 | 32K | 100% | Speed-critical, pipelines |
+| c_gemma3-27b-128k | 7.6 | 14 | 128K | 100% | Creative writing (no tool calling) |
+| c_phi4-reasoning-plus-32k | 7.5 | 22 | 32K | 100% | Math/logic (thinking leaks in simple tasks) |
+| c_qwen25-coder-32b-32k | 7.4 | 12 | 32K | 100% | Code generation only |
+| c_medgemma-27b-128k | 6.6 | 14 | 128K | 100% | Medical domain only |
 
 ### Context window notes
 
@@ -97,7 +96,7 @@ Ollama clamps `num_ctx` to the model's native context length — you cannot exce
 
 **Retired models:** `c_qwen25-coder-7b-32k` (non-functional) and `c_gpt-oss-20b-128k` (degenerate output) removed.
 
-**Tool calling works with:** qwen3-14b, lfm2-24b, qwen3-30b. Broken on gemma3, medgemma, phi4-reasoning (HTTP 400).
+**Tool calling works with:** qwen3-14b, lfm2-24b, qwen3-30b, glm47-flash, nemotron-3-nano. Broken on gemma3, medgemma, phi4-reasoning (HTTP 400). qwen25-coder outputs tool JSON as text (partial).
 
 ## Eval Results Structure
 

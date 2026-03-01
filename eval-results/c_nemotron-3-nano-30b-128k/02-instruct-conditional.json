@@ -1,0 +1,1 @@
+{"model":"c_nemotron-3-nano-30b-128k","created_at":"2026-03-01T17:47:17.587061819Z","message":{"role":"assistant","content":"Paris"},"done":true,"done_reason":"stop","total_duration":2143069159,"load_duration":202168187,"prompt_eval_count":66,"prompt_eval_duration":1866722558,"eval_count":2,"eval_duration":67331378}

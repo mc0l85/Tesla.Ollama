@@ -1,0 +1,3 @@
+- CRISPR-Cas9 was repurposed by Jennifer Doudna and Emmanuelle Charpentier to edit DNA at specific locations, earning them the 2020 Nobel Prize in Chemistry.
+- CRISPR has been applied in agriculture, medicine, and basic research, with notable achievements including FDA-approved therapy for sickle cell disease.
+- Ethical concerns over germline editing and commercial investment totaling $5 billion in 2023 highlight both challenges and optimism surrounding CRISPR technology.

@@ -2,61 +2,70 @@ Okay, let's break down the process of how a Central Processing Unit (CPU) execut
 
 **1. Loading the Program into Memory:**
 
-*   **Storage:** Programs (and data) are typically stored on persistent storage devices like Hard Disk Drives (HDDs), Solid State Drives (SSDs), or optical media. These devices store information as magnetic charges or electrical states, representing binary digits (bits: 0s and 1s).
-*   **Operating System (OS) Role:** The OS manages the loading process. When you launch a program, the OS locates the executable file on storage.
-*   **Memory Allocation:** The OS allocates a contiguous block of memory, typically in RAM (Random Access Memory), for the program's code (instructions) and data. This memory space is often divided into segments: code segment (text), data segment (initialized global variables), BSS segment (uninitialized global variables), heap (dynamic memory allocation), and stack (function calls, local variables).
-*   **Loading Process:** The OS reads the executable file from storage. It copies the binary instructions and initial data from the storage device into the allocated RAM. This involves transferring blocks of data (e.g., sectors or pages) from the storage device to RAM.
-*   **Executable Format:** Executable files (like .exe on Windows, or ELF on Linux) have a specific format. They contain headers (metadata like entry point, library dependencies) and sections (code, data). The OS loader interprets this format to place the code and data correctly in memory.
-*   **Entry Point:** The executable file specifies an "entry point" – the memory address of the first instruction to be executed. The OS sets the Program Counter (PC) register (explained below) to this address.
+*   **Storage:** Programs (like operating systems, applications, games) are typically stored on persistent storage devices like Hard Disk Drives (HDDs), Solid State Drives (SSDs), or optical media (CDs/DVDs). These devices store data as magnetic charges (HDDs), electrical charges (SSDs), or physical pits (optical media).
+*   **Binary Format:** The program itself is represented in machine code, which is a sequence of binary digits (0s and 1s). This binary code consists of instructions and data.
+*   **Loading Process:** When a program is launched, the operating system (OS) is responsible for loading the program's executable file from storage into the main memory (RAM - Random Access Memory).
+*   **Memory Allocation:** The OS allocates a contiguous block of memory (or potentially multiple blocks) for the program. This memory space is divided into sections:
+    *   **Text Segment:** Contains the executable instructions (machine code).
+    *   **Data Segment:** Contains initialized global and static variables.
+    *   **BSS Segment:** Contains uninitialized global and static variables (initialized to zero).
+    *   **Heap:** Dynamically allocated memory used during program execution (e.g., using `malloc` or `new`).
+    *   **Stack:** Used for function calls, local variables, and return addresses.
+*   **Memory Address:** Each byte in RAM has a unique numerical address. The OS loads the program's binary code, starting from a designated entry point (usually the `main` function's address), into the allocated memory locations. The CPU needs to know the starting address of the program's instructions in memory.
 
 **2. The Fetch-Decode-Execute Cycle:**
 
 This is the fundamental operational cycle of the CPU. It repeats continuously as long as the program is running.
 
+*   **Program Counter (PC):** A special register within the CPU holds the memory address of the *next* instruction to be executed.
 *   **Fetch:**
-    *   The CPU contains a special register called the **Program Counter (PC)**. The PC holds the memory address of the *next* instruction to be executed.
-    *   The CPU sends the address stored in the PC to the memory system (RAM).
-    *   The memory system retrieves the instruction located at that address.
-    *   The instruction (a sequence of bits representing an operation) is fetched from memory and placed into the **Instruction Register (IR)** within the CPU.
-    *   Simultaneously, the PC is incremented (usually by the size of the instruction, e.g., 4 bytes for a 32-bit architecture) to point to the next instruction in memory, assuming sequential execution.
+    1.  The CPU reads the contents of the memory address pointed to by the PC.
+    2.  The instruction stored at that address is fetched from RAM and loaded into the Instruction Register (IR).
 *   **Decode:**
-    *   The **Control Unit (CU)** within the CPU decodes the instruction stored in the IR.
-    *   Decoding involves interpreting the binary code of the instruction. The CU determines:
-        *   The **opcode:** The operation to be performed (e.g., addition, subtraction, load, store, branch).
-        *   The **operands:** The data or memory locations involved in the operation. These might be register numbers, immediate values (constants embedded in the instruction), or memory addresses.
+    1.  The instruction in the IR is decoded by the control unit within the CPU.
+    2.  Decoding involves identifying the opcode (operation code) and operands (data or memory addresses) specified by the instruction.
+    3.  The control unit generates control signals that activate the necessary components (ALU, registers, memory interface) to perform the operation.
 *   **Execute:**
-    *   Based on the decoded instruction, the CU generates control signals that activate the appropriate components within the CPU and interface with the memory system.
-    *   This phase involves performing the operation specified by the opcode using the operands. This might involve:
-        *   **Arithmetic/Logical Operations:** The **Arithmetic Logic Unit (ALU)** performs arithmetic (addition, subtraction, multiplication, division) and logical (AND, OR, NOT, XOR, comparisons) operations. The operands might be fetched from registers or memory, processed by the ALU, and the result stored back in a register or memory.
-        *   **Data Transfer:** Data is moved between registers, between registers and memory, or between the CPU and I/O devices.
-        *   **Control Flow:** The PC is modified (e.g., for branching/jumping).
+    1.  The CPU performs the operation specified by the decoded instruction. This might involve:
+        *   Arithmetic or logical operations using the Arithmetic Logic Unit (ALU).
+        *   Moving data between registers and memory.
+        *   Comparing values.
+        *   Changing the program flow (branching).
+    2.  The PC is updated to point to the next instruction. This is usually the address immediately following the current instruction, but it can be changed by branching instructions.
 
 **3. Registers:**
 
 Registers are small, high-speed storage locations within the CPU. They are used to hold data and addresses that the CPU is actively working with. Key registers include:
 
 *   **Program Counter (PC):** Holds the address of the next instruction.
-*   **Instruction Register (IR):** Holds the currently fetched instruction.
-*   **Accumulator (ACC):** Often used to store intermediate results of arithmetic/logical operations.
-*   **Memory Address Register (MAR):** Holds the address of the memory location being accessed (read or written).
-*   **Memory Data Register (MDR) / Memory Buffer Register (MBR):** Holds the data being read from or written to memory.
-*   **General-Purpose Registers (GPRs):** Used for storing operands, intermediate results, and addresses. Examples include EAX, EBX, ECX, EDX on x86 architectures.
+*   **Instruction Register (IR):** Holds the current instruction being executed.
+*   **Accumulator (ACC) / General-Purpose Registers (e.g., EAX, RAX, R0-R7):** Used for arithmetic operations, storing intermediate results, and holding data.
 *   **Stack Pointer (SP):** Points to the top of the stack in memory.
-*   **Status Register / Flags Register:** Contains bits indicating the status of the CPU (e.g., carry flag, zero flag, overflow flag, sign flag). These flags are set by the ALU and used for conditional branching.
+*   **Base Pointer (BP) / Frame Pointer:** Used to manage stack frames for function calls.
+*   **Status Register / Flags Register:** Contains flags indicating the result of the last operation (e.g., zero flag, carry flag, overflow flag).
 
-**4. The Role of the ALU:**
+**4. The Role of the ALU (Arithmetic Logic Unit):**
 
-The Arithmetic Logic Unit (ALU) is the core computational engine of the CPU. It performs all arithmetic and logical operations.
-
-*   **Arithmetic Operations:** Addition, subtraction, multiplication, division (integer and sometimes floating-point).
-*   **Logical Operations:** AND, OR, NOT, XOR, bit shifts, comparisons (e.g., greater than, less than, equal to).
-*   **Input:** The ALU receives operands from registers or memory (as specified by the instruction).
-*   **Output:** The ALU produces a result, which is typically stored in a register (like the accumulator) or written back to memory.
-*   **Status Flags:** The ALU also sets status flags (in the Status Register) based on the result (e.g., Zero flag if the result is zero, Carry flag if there's an overflow).
+The ALU is the core computational engine of the CPU. It performs arithmetic operations (addition, subtraction, multiplication, division) and logical operations (AND, OR, NOT, XOR, comparisons). The control unit directs the ALU to perform the specific operation indicated by the instruction's opcode, using data fetched from registers or memory. The result of the ALU operation is typically stored back in a register or memory location.
 
 **5. Branching:**
 
-Branching (also called jumping) allows the program to deviate from sequential execution.
+Branching instructions (e.g., `if` statements, `switch` statements, `goto` statements, loops) alter the normal sequential flow of execution.
 
-*   **Conditional Branching:** The CPU executes an instruction (e.g., `JNZ` - Jump if Not Zero). The CU checks the status flags (e.g., the Zero flag). If the condition is met (e.g., the Zero flag is not set), the PC is updated with the address specified in the branch instruction, causing execution to jump to a different location in memory. If the condition is not met, the PC is simply incremented (as in normal sequential execution), and the next instruction is fetched.
-*   **Unconditional Branching:** The CPU executes a jump instruction (e.g., `JMP`). The PC is updated with the address specified in
+*   **Conditional Branching:** The CPU evaluates a condition (often based on flags set by a previous ALU operation). If the condition is true, the PC is updated to the address of the target instruction (the branch target). If the condition is false, the PC is updated to the next sequential instruction.
+*   **Unconditional Branching:** The PC is always updated to the address of the target instruction (e.g., `goto` statement, function call).
+*   **Jump Instructions:** Similar to unconditional branches, used for transferring control to a specific location.
+*   **Function Calls:** A special type of branch where the current instruction's address is pushed onto the stack, and the PC is set to the function's entry point. The stack pointer is updated.
+*   **Function Returns:** The return address is popped from the stack and loaded into the PC, and the stack pointer is adjusted.
+
+**6. Program Termination:**
+
+A program terminates when it reaches the end of its instructions or encounters an error condition.
+
+*   **Normal Termination:** The program executes its final instruction, often returning a value (exit code) to the operating system. The OS then reclaims the program's memory resources.
+*   **Abnormal Termination:** The program encounters an error (e.g., division by zero, accessing invalid memory, unhandled exception). The OS typically terminates the program, often generating an error message or crash report. The OS reclaims resources.
+*   **System Calls:** Programs often make system calls to the OS to request services (e.g., reading from a file, writing to the screen, exiting). The `exit()` system call is a common way for a program to terminate normally. The OS handles the cleanup and termination process.
+
+**Summary:**
+
+The CPU executes a program by repeatedly fetching instructions from memory (pointed to by the PC), decoding them to understand the operation and operands, and then executing them. This involves using registers for data and addresses, the ALU for calculations, and branching to control the flow of execution. The process continues until the program completes its task or encounters an error, at which point the OS handles the termination and resource cleanup.

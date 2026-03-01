@@ -1,0 +1,2 @@
+TOOL CALLS:
+  - get_weather(location="Tokyo, Japan", unit="celsius")

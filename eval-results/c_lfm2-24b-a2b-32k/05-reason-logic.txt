@@ -1,65 +1,43 @@
 Let's solve the problem step by step.
 
-**Step 1: Define Variables**
+**Let’s define the variables:**
+- Let \( B \) represent the amount of wheat (in tons) produced by **Field B**.
+- According to the problem:
+  - **Field A** produced twice as much as Field B: \( A = 2B \).
+  - **Field C** produced 10 tons more than Field B: \( C = B + 10 \).
 
-Let’s denote:
-- \( B \) = amount of wheat (in tons) produced by Field B.
-
-Then:
-- Field A produced twice as much as Field B: \( A = 2B \).
-- Field C produced 10 tons more than Field B: \( C = B + 10 \).
-
-**Step 2: Write the Total Harvest Equation**
-
-The total harvest from all three fields is 110 tons:
+**The total harvest is 110 tons:**
 \[
 A + B + C = 110
 \]
 
-Substitute \( A \) and \( C \) with the expressions in terms of \( B \):
+**Substitute the expressions for \( A \) and \( C \) in terms of \( B \):**
 \[
 2B + B + (B + 10) = 110
 \]
 
-**Step 3: Simplify the Equation**
-
-Combine like terms:
-\[
-2B + B + B + 10 = 110
-\]
+**Combine like terms:**
 \[
 4B + 10 = 110
 \]
 
-**Step 4: Solve for \( B \)**
-
-Subtract 10 from both sides:
+**Subtract 10 from both sides:**
 \[
 4B = 100
 \]
 
-Divide both sides by 4:
+**Divide both sides by 4:**
 \[
 B = 25
 \]
 
-**Step 5: Find \( A \) and \( C \)**
-
-Now, substitute \( B = 25 \) back into the expressions for \( A \) and \( C \):
+**Now find \( A \) and \( C \):**
 \[
 A = 2B = 2 \times 25 = 50
 \]
 \[
 C = B + 10 = 25 + 10 = 35
 \]
-
-**Step 6: Verify the Solution**
-
-Check that the sum is 110 tons:
-\[
-A + B + C = 50 + 25 + 35 = 110
-\]
-The total matches, so the solution is correct.
 
 **Final Answer:**
 \[
@@ -71,3 +49,11 @@ The total matches, so the solution is correct.
 \end{aligned}
 }
 \]
+
+**Verification:**
+\[
+50 + 25 + 35 = 110 \quad \text{(Correct)}
+\]
+
+**Answer:**  
+Field A produced **50 tons**, Field B produced **25 tons**, and Field C produced **35 tons**.

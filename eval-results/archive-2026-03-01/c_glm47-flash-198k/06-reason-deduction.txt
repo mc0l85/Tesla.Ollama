@@ -1,0 +1,49 @@
+Here is the step-by-step deduction to find the seating order:
+
+1.  **Analyze the positions:**
+    Let the seats be labeled 1, 2, 3, 4, and 5 from left to right.
+
+2.  **Analyze Clue 4 (Eve is at one of the ends):**
+    Eve is either in Seat 1 or Seat 5.
+
+3.  **Analyze Clue 2 (Alice is left of Dave):**
+    Alice must be to the left of Dave. This means Alice cannot be in Seat 5 and Dave cannot be in Seat 1.
+
+4.  **Analyze Clue 1 (Bob is not at either end):**
+    Bob cannot be in Seat 1 or Seat 5.
+
+    *   *Current Status:*
+        *   Seat 1: Not Bob, Not Dave, Not Eve (if Eve is there, Alice can't be left of Dave). So, Seat 1 is **Alice**.
+        *   Seat 5: Not Bob, Not Dave, Not Alice. So, Seat 5 is **Eve**.
+
+    *   *Current Arrangement:* **Alice - [ - ] - [ - ] - [ - ] - Eve**
+
+5.  **Analyze Clue 3 (Carol is immediately next to Bob):**
+    Since Bob is not at the ends, he must be in Seat 2, 3, or 4.
+    If Bob is in Seat 2, Carol is in Seat 3.
+    If Bob is in Seat 4, Carol is in Seat 3.
+    If Bob is in Seat 3, Carol is in Seat 2 or 4.
+
+6.  **Analyze Clue 5 (There is exactly one person between Alice and Carol):**
+    We know Alice is in Seat 1. For there to be exactly one person between them, Carol must be in Seat 3 (1 -> 2 -> 3).
+
+    *   *Current Arrangement:* **Alice - [ - ] - Carol - [ - ] - Eve**
+
+7.  **Determine Bob's position:**
+    Since Carol is in Seat 3 and is immediately next to Bob, Bob must be in Seat 2 or Seat 4.
+
+    *   *Scenario A:* If Bob is in Seat 2, Carol is in Seat 3.
+    *   *Scenario B:* If Bob is in Seat 4, Carol is in Seat 3.
+
+    *   *Check Clue 2 (Alice is left of Dave):*
+        In Scenario A, Dave would have to be in Seat 4 or 5. But Seat 5 is Eve. Seat 4 would be Dave. This works.
+        In Scenario B, Dave would have to be in Seat 5. But Seat 5 is Eve. This is a contradiction.
+
+    Therefore, Bob is in Seat 2.
+
+8.  **Determine the final position (Dave):**
+    The only remaining seat for Dave is Seat 4.
+
+**Final Seating Order (Left to Right):**
+
+**Alice, Bob, Carol, Dave, Eve**

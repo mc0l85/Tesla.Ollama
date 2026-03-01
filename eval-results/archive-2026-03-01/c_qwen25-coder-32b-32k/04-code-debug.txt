@@ -1,0 +1,19 @@
+The bug is that the function only checks if an item is a list and does not handle other iterable types like tuples. To fix this, we should check if an item is an instance of `collections.abc.Iterable` and not a string (since strings are also iterable).
+
+Here's the corrected version:
+
+```python
+from collections.abc import Iterable
+
+def flatten(nested_list):
+    result = []
+    for item in nested_list:
+        if isinstance(item, Iterable) and not isinstance(item, str):
+            result.extend(flatten(item))
+        else:
+            result.append(item)
+    return result
+
+# Should work for any iterable nesting:
+print(flatten([1, (2, 3), [4, [5]]]))  # Expected: [1, 2, 3, 4, 5]
+```

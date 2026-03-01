@@ -1,53 +1,71 @@
-The issue with the `flatten` function lies in the condition:
+The bug in the given Python function lies in how it checks for nested lists. Specifically, the line:
 
 ```python
 if type(item) == list:
 ```
 
-### ❌ What's wrong:
-This check is **too restrictive**. It only checks if the item is **exactly** a `list` type, but it **does not handle other iterable types** like tuples, sets, or even generators. In the test case:
+This line **only checks if the item is a `list`**, but the function is supposed to work with **any iterable**, including tuples, sets, and other custom iterable types. In the example:
 
 ```python
 flatten([1, (2, 3), [4, [5]]])
 ```
 
-The element `(2, 3)` is a **tuple**, not a `list`, so the `if type(item) == list:` condition is **not triggered**, and the tuple is **not flattened** — it's simply **appended to the result** as-is.
+The tuple `(2, 3)` is iterable but **not a `list`**, so it is **not flattened**, and the output will be:
 
-### 🔍 Expected behavior:
-The function should **recursively flatten all nested iterables**, regardless of their type (e.g., lists, tuples, etc.).
+```
+[1, (2, 3), 4, 5]
+```
 
-### ✅ Corrected version:
-To fix the issue, we should check whether the item is **an iterable** (but not a string — see below), and then recursively flatten it. Here's the corrected function:
+But the **expected** output is:
+
+```
+[1, 2, 3, 4, 5]
+```
+
+---
+
+### ✅ **What's wrong:**
+
+- The function only checks for `list` type, not any general iterable.
+- Tuples, generators, or other iterable types won't be handled correctly.
+
+---
+
+### ✅ **How to fix it:**
+
+Use `isinstance(item, Iterable)` from the `collections.abc` module to detect any iterable type, and recursively flatten them.
+
+Here’s the corrected version:
 
 ```python
+from collections.abc import Iterable
+
 def flatten(nested_list):
     result = []
     for item in nested_list:
-        # Check if the item is an iterable (but not a string)
-        # We use `iter()` to test for iterability
-        try:
-            iter(item)
-        except TypeError:
-            # Not an iterable, append it as-is
-            result.append(item)
+        if isinstance(item, Iterable) and not isinstance(item, (str, bytes)):
+            result.extend(flatten(item))
         else:
-            # If it's a string, we don't want to flatten it
-            if isinstance(item, str):
-                result.append(item)
-            else:
-                result.extend(flatten(item))
+            result.append(item)
     return result
 
-# Test case
-print(flatten([1, (2, 3), [4, [5]]]))  # Now outputs: [1, 2, 3, 4, 5]
+# Now it works as expected
+print(flatten([1, (2, 3), [4, [5]]]))  # Output: [1, 2, 3, 4, 5]
 ```
 
-### 📌 Key improvements:
-- **Iterability check** using `iter(item)` allows us to detect any iterable (like tuples, lists, etc.).
-- **String handling**: We avoid flattening strings (e.g., `"hello"` should not become `['h', 'e', 'l', 'l', 'o']`), so we explicitly check with `isinstance(item, str)` and append them as-is.
-- **Generalization**: The function now works with any iterable nesting, not just lists.
+---
 
-### ✅ Example:
+### 🔍 **Explanation of the Fix:**
+
+- `isinstance(item, Iterable)` checks if the item is any kind of iterable (lists, tuples, sets, generators, etc.).
+- `not isinstance(item, (str, bytes))` is added to **avoid treating strings and bytes as iterables**, which would cause them to be broken into individual characters instead of being treated as atomic elements.
+
+---
+
+### ✅ **Example Output:**
+
 ```python
-print(flatten([1, (2, 3), [4, [5]], {6, 7}]))  # Output: [1, 2, 3, 4, 5, 6, 7]
+print(flatten([1, (2, 3), [4, [5]]]))  # Output: [1, 2, 3, 4, 5]
 ```
+
+This now works correctly for nested iterables of any type (except strings and bytes, which are treated as atomic elements).

@@ -1,6 +1,26 @@
-Let Field B's production be x tons. Then:
+Let Field B's production be x tons.
 
-1. Field A produced twice as much as Field B, so Field A = 2x.
-2. Field C produced 10 tons more than Field B, so Field C = x + 10.
-3. The total harvest from all three fields is 110 tons, which gives:
-  2x + x + (x
+Step 1: Express the production of the other fields in terms of x.
+  Field A produces twice as much as Field B, so Field A = 2x.
+  Field C produces 10 tons more than Field B, so Field C = x + 10.
+
+Step 2: Write an equation for the total harvest.
+  Total production = Field A + Field B + Field C = 2x + x + (x + 10) = 110
+
+Step 3: Simplify the equation.
+  2x + x + x + 10 = 4x + 10 = 110
+
+Step 4: Solve for x.
+  4x + 10 = 110
+  Subtract 10 from both sides: 4x = 100
+  Divide by 4: x = 25
+
+Step 5: Determine the production for each field.
+  Field B = x = 25 tons
+  Field A = 2x = 2 × 25 = 50 tons
+  Field C = x + 10 = 25 + 10 = 35 tons
+
+Thus, the fields produced:
+  Field A: 50 tons
+  Field B: 25 tons
+  Field C: 35 tons

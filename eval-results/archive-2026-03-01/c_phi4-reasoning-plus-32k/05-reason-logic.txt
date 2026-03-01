@@ -1,0 +1,6 @@
+Let Field B's production be x tons. Then:
+
+1. Field A produced twice as much as Field B, so Field A = 2x.
+2. Field C produced 10 tons more than Field B, so Field C = x + 10.
+3. The total harvest from all three fields is 110 tons, which gives:
+  2x + x + (x

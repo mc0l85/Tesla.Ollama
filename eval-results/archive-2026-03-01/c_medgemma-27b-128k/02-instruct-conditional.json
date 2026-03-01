@@ -1,0 +1,1 @@
+{"model":"c_medgemma-27b-128k","created_at":"2026-03-01T05:48:33.889278788Z","message":{"role":"assistant","content":"Paris\n"},"done":true,"done_reason":"stop","total_duration":572243446,"load_duration":139898287,"prompt_eval_count":71,"prompt_eval_duration":257219426,"eval_count":3,"eval_duration":146380271}

@@ -2,28 +2,28 @@
 {
   "inventory": [
     {
-      "title": "The Martian",
-      "author": "Andy Weir",
-      "year": 2011,
-      "price": 9.99,
-      "genres": ["Science Fiction", "Thriller"],
+      "title": "The Lord of the Rings",
+      "author": "J.R.R. Tolkien",
+      "year": 1954,
+      "price": 29.99,
+      "genres": ["Fantasy", "Adventure"],
       "in_stock": true
     },
     {
       "title": "Pride and Prejudice",
       "author": "Jane Austen",
       "year": 1813,
-      "price": 7.50,
-      "genres": ["Classic", "Romance"],
-      "in_stock": false
+      "price": 12.50,
+      "genres": ["Romance", "Classic"],
+      "in_stock": true
     },
     {
-      "title": "To Kill a Mockingbird",
-      "author": "Harper Lee",
-      "year": 1960,
-      "price": 12.50,
-      "genres": ["Classic", "Fiction", "Drama"],
-      "in_stock": true
+      "title": "1984",
+      "author": "George Orwell",
+      "year": 1949,
+      "price": 15.75,
+      "genres": ["Dystopian", "Science Fiction"],
+      "in_stock": false
     }
   ]
 }

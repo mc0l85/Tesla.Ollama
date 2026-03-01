@@ -1,38 +1,33 @@
-Okay, let's break this problem down step by step:
+Here's how we can solve this problem step-by-step:
 
 **1. Define Variables:**
 
-* Let's use 'x' to represent the amount of wheat produced in Field B (in tons).
-* Field A produced twice as much as Field B, so Field A produced 2x tons.
-* Field C produced 10 tons more than Field B, so Field C produced x + 10 tons.
+* Let's use 'x' to represent the amount of wheat produced by Field B.
+* Field A produced twice as much as Field B, so Field A = 2x
+* Field C produced 10 tons more than Field B, so Field C = x + 10
 
 **2. Set up the Equation:**
 
-The total harvest was 110 tons, so we can write the equation:
-
+The total harvest was 110 tons. So:
 Field A + Field B + Field C = 110
 2x + x + (x + 10) = 110
 
-**3. Solve the Equation:**
+**3. Solve for x:**
 
-* Combine like terms: 2x + x + x + 10 = 4x + 10
-* The equation becomes: 4x + 10 = 110
+* Combine like terms: 4x + 10 = 110
 * Subtract 10 from both sides: 4x = 100
 * Divide both sides by 4: x = 25
 
-**4. Calculate the Production of Each Field:**
+**4. Calculate Production for Each Field:**
 
-* **Field B:**  x = 25 tons
+* **Field B:** x = 25 tons
 * **Field A:** 2x = 2 * 25 = 50 tons
 * **Field C:** x + 10 = 25 + 10 = 35 tons
 
-**5. Check the Answer:**
-
-Let's make sure our answer is correct:
-50 + 25 + 35 = 110 
-
 **Answer:**
 
-* **Field A produced 50 tons of wheat.**
-* **Field B produced 25 tons of wheat.**
-* **Field C produced 35 tons of wheat.**
+* Field A produced 50 tons of wheat.
+* Field B produced 25 tons of wheat.
+* Field C produced 35 tons of wheat.
+
+**Check:** 50 + 25 + 35 = 110 (This confirms our answer is correct!)

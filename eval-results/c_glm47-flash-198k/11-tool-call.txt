@@ -2,4 +2,4 @@ TOOL CALLS:
   - get_weather(location="Tokyo, Japan")
 
 RAW CONTENT:
-I'll get the current weather information for Tokyo, Japan for you.
+I'll get the current weather for Tokyo, Japan for you.

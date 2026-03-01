@@ -17,11 +17,11 @@ Subtract 10 from both sides:
 Divide by 4:
 \[ x = 25 \]
 
-So, Field B produced 25 tons of wheat.
-- Field A produced \( 2x = 2 \times 25 = 50 \) tons.
-- Field C produced \( x + 10 = 25 + 10 = 35 \) tons.
+So, Field B produced 25 tons. Now we can find the production of Fields A and C:
+- Field A: \( 2x = 2 \times 25 = 50 \) tons
+- Field C: \( x + 10 = 25 + 10 = 35 \) tons
 
-Thus, the production is:
+Thus, the production for each field is:
 - Field A: 50 tons
 - Field B: 25 tons
 - Field C: 35 tons

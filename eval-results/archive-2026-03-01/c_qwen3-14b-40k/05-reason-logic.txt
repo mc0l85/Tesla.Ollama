@@ -1,0 +1,73 @@
+We are given the following information:
+
+- Field A produced **twice as much wheat** as Field B.
+- Field C produced **10 tons more** than Field B.
+- The **total harvest** from all three fields is **110 tons**.
+
+---
+
+### Step 1: Assign a variable to the unknown quantity
+
+Let’s let:
+
+- $ x $ = the amount of wheat produced by **Field B** (in tons).
+
+Then:
+
+- Field A produced $ 2x $ tons (twice as much as Field B),
+- Field C produced $ x + 10 $ tons (10 tons more than Field B).
+
+---
+
+### Step 2: Set up the equation for the total harvest
+
+The total harvest is the sum of the harvests from all three fields:
+
+$$
+\text{Field A} + \text{Field B} + \text{Field C} = \text{Total}
+$$
+
+$$
+2x + x + (x + 10) = 110
+$$
+
+---
+
+### Step 3: Simplify the equation
+
+$$
+2x + x + x + 10 = 110
+$$
+
+$$
+4x + 10 = 110
+$$
+
+---
+
+### Step 4: Solve for $ x $
+
+$$
+4x = 110 - 10 = 100
+$$
+
+$$
+x = \frac{100}{4} = 25
+$$
+
+---
+
+### Step 5: Find the harvest from each field
+
+- Field B: $ x = 25 $ tons
+- Field A: $ 2x = 2 \times 25 = 50 $ tons
+- Field C: $ x + 10 = 25 + 10 = 35 $ tons
+
+---
+
+### ✅ Final Answer:
+
+- **Field A**: 50 tons  
+- **Field B**: 25 tons  
+- **Field C**: 35 tons  
+- **Total**: $ 50 + 25 + 35 = 110 $ tons ✅

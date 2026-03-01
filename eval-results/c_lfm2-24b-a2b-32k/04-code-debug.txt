@@ -1,18 +1,41 @@
-The issue with the function is that it only checks if an item is a list using `type(item) == list`. This means it won't handle other types of iterable objects like tuples.
+The issue with the function is that it only checks if an item is a list (`type(item) == list`), but it doesn't handle other types of iterable objects like tuples. 
 
-To fix this, you can use the `isinstance()` function to check if an item is an instance of a list or a tuple. Here's the corrected version:
+When the function encounters a tuple, it treats it as a non-iterable object and tries to append it to the result list, which is not the desired behavior.
+
+Here's the corrected version:
 
 ```python
 def flatten(nested_list):
     result = []
     for item in nested_list:
-        if isinstance(item, (list, tuple)):
-            result.extend(flatten(item))
+        if hasattr(item, '__iter__') and not isinstance(item, str):
+            result.extend(flatten(item) if hasattr(item, '__iter__') and isinstance(item, (list, tuple)) else [item])
         else:
             result.append(item)
     return result
 
-print(flatten([1, (2, 3), [4, [5]]]))  # Output: [1, 2, 3, 4, 5]
+# Alternatively, a more concise version:
+def flatten(nested_list):
+    result = []
+    for item in nested_list:
+        if hasattr(item, '__iter__') and not isinstance(item, str):
+            result.extend(flatten(item) if isinstance(item, (list, tuple)) else [item])
+        else:
+            result.append(item)
+    return result
+
+# Or even more concise using recursion and a generator:
+def flatten(nested_list):
+    for item in nested_list:
+        if isinstance(item, (list, tuple)):
+            yield from flatten(item)
+        else:
+            yield item
+
+# Test the function
+print(list(flatten([1, (2, 3), [4, [5]]])))  # Output: [1, 2, 3, 4, 5]
 ```
 
-This version will correctly handle any type of iterable nesting, including lists, tuples, and potentially other iterable types if needed. However, be aware that this function will still fail if the input contains other types of iterable objects that are not handled by the `isinstance()` check. If you need to handle more types of iterables, you can add them to the tuple in the `isinstance()` call.
+In the corrected version, we check if an item has an `__iter__` attribute and is not a string. If it does, we recursively call `flatten` on that item. If not, we simply append it to the result list. 
+
+The last version uses a generator to yield the items one by one, which can be more memory-efficient for large inputs. The `yield from` statement is used to yield all items from the recursive call to `flatten`. The result is converted to a list before printing.

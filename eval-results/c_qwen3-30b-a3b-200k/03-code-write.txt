@@ -1,31 +1,26 @@
-To solve this problem, we need to merge two sorted lists of integers into a single sorted list without using any built-in sorting functions. The solution involves a two-pointer technique to efficiently combine the lists while maintaining the sorted order.
+To solve this problem, we need to merge two sorted lists of integers into a single sorted list without using the built-in `sorted()` function or `.sort()` method. The solution leverages the two-pointer technique to efficiently combine the lists while maintaining the sorted order.
 
 ### Approach
-1. **Initialization**: Start with an empty list to store the merged result.
-2. **Two Pointers**: Use two pointers, `i` for the first list and `j` for the second list, both initialized to 0.
-3. **Comparison and Merging**: 
-   - While both pointers are within their respective list bounds, compare the elements at the current pointers.
+1. **Initialization**: Start with two pointers, `i` and `j`, both set to 0, to traverse the first and second lists respectively.
+2. **Comparison and Merging**: While both pointers are within their respective list bounds:
+   - Compare the elements at the current pointers of both lists.
    - Append the smaller element to the result list and increment the corresponding pointer.
-4. **Append Remaining Elements**: After one list is exhausted, append all remaining elements from the other list to the result (since the remaining elements are already sorted).
+3. **Appending Remaining Elements**: After one list is exhausted, append all remaining elements from the other list to the result list. This step ensures all elements are included without additional sorting.
 
-This approach efficiently merges the two sorted lists in linear time, O(n + m), where n and m are the lengths of the two input lists.
+This approach efficiently merges the two sorted lists in O(n + m) time, where n and m are the lengths of the two input lists, by processing each element exactly once.
 
 ### Solution Code
 ```python
 def merge_sorted(list1, list2):
     """
-    Merges two sorted lists into a single sorted list without using built-in sort functions.
+    Merges two sorted lists into a single sorted list without using sorted() or .sort().
     
     Args:
         list1: A sorted list of integers.
-        list2: Another sorted list of integers.
+        list2: A sorted list of integers.
     
     Returns:
-        A single sorted list containing all elements from both input lists.
-    
-    Example:
-        >>> merge_sorted([1, 3, 5], [2, 4, 6])
-        [1, 2, 3, 4, 5, 6]
+        A new sorted list containing all elements from list1 and list2.
     """
     result = []
     i, j = 0, 0
@@ -36,15 +31,21 @@ def merge_sorted(list1, list2):
         else:
             result.append(list2[j])
             j += 1
-    while i < len(list1):
-        result.append(list1[i])
-        i += 1
-    while j < len(list2):
-        result.append(list2[j])
-        j += 1
+    result.extend(list1[i:])
+    result.extend(list2[j:])
     return result
 
 # Test cases
 assert merge_sorted([1, 3, 5], [2, 4, 6]) == [1, 2, 3, 4, 5, 6]
 assert merge_sorted([], [1, 2, 3]) == [1, 2, 3]
 ```
+
+### Explanation
+- **Initialization**: The `result` list is initialized to store the merged elements. Pointers `i` and `j` start at the beginning of `list1` and `list2` respectively.
+- **Merging Loop**: The loop continues as long as both pointers are within their list bounds. The smaller of the two current elements is appended to `result`, and the corresponding pointer is incremented.
+- **Appending Remainders**: Once one list is fully processed, the remaining elements of the other list are appended to `result` in order (since both input lists are sorted).
+- **Test Cases**: 
+  1. Merging `[1, 3, 5]` and `[2, 4, 6]` produces `[1, 2, 3, 4, 5, 6]`.
+  2. Merging an empty list with `[1, 2, 3]` results in `[1, 2, 3]`.
+
+These test cases validate the function's correctness for typical and edge cases (like empty lists). The solution efficiently handles the merging process with optimal time complexity.

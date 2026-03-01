@@ -1,0 +1,1 @@
+{"model": "c_glm47-flash-198k", "messages": [{"role": "user", "content": "Write a short story (250-350 words) about an astronaut who discovers that the stars are not what they seem. The story must have a clear beginning, middle, and end. Use vivid sensory details. The tone should be unsettling, not hopeful."}], "stream": false, "think": false, "options": {"num_predict": 800}}

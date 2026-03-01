@@ -1,9 +1,78 @@
-Let’s solve the problem step by step using algebra.
+To determine how many tons each field produced, we begin by defining the amount produced by **Field B** as a variable. Let:
+
+- Field B = $ x $ tons
+
+From the problem, we know:
+
+- **Field A** produced **twice as much** as Field B → Field A = $ 2x $
+- **Field C** produced **10 tons more** than Field B → Field C = $ x + 10 $
 
 ---
 
-### Step 1: Define Variables
-Let $ x $ represent the amount of wheat (in tons) produced by **Field B**.
+### Step 1: Write the Total Harvest Equation
 
-- **Field A** produced **twice as much as Field B**, so it produced $ 2x $ tons.
-- **Field C** produced **10 tons more than Field B**,
+The total harvest from all three fields is given as 110 tons. So:
+
+$$
+\text{Field A} + \text{Field B} + \text{Field C} = 110
+$$
+
+Substitute the expressions in terms of $ x $:
+
+$$
+2x + x + (x + 10) = 110
+$$
+
+Simplify the left-hand side:
+
+$$
+2x + x + x + 10 = 4x + 10
+$$
+
+So:
+
+$$
+4x + 10 = 110
+$$
+
+---
+
+### Step 2: Solve for $ x $
+
+Subtract 10 from both sides:
+
+$$
+4x = 100
+$$
+
+Divide both sides by 4:
+
+$$
+x = 25
+$$
+
+---
+
+### Step 3: Calculate Each Field's Production
+
+- **Field B** = $ x = 25 $ tons  
+- **Field A** = $ 2x = 2 \times 25 = 50 $ tons  
+- **Field C** = $ x + 10 = 25 + 10 = 35 $ tons  
+
+---
+
+### Step 4: Verify the Total
+
+$$
+50 + 25 + 35 = 110 \quad \text{✓}
+$$
+
+All conditions are satisfied.
+
+---
+
+### ✅ Final Answer
+
+- **Field A** produced $\boxed{50}$ tons  
+- **Field B** produced $\boxed{25}$ tons  
+- **Field C** produced $\boxed{35}$ tons

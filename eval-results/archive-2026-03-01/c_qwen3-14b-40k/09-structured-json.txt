@@ -1,0 +1,28 @@
+{
+  "books": [
+    {
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "year": 1925,
+      "price": 12.99,
+      "genres": ["Fiction", "Classic"],
+      "in_stock": true
+    },
+    {
+      "title": "To Kill a Mockingbird",
+      "author": "Harper Lee",
+      "year": 1960,
+      "price": 14.50,
+      "genres": ["Fiction", "Drama"],
+      "in_stock": true
+    },
+    {
+      "title": "1984",
+      "author": "George Orwell",
+      "year": 1949,
+      "price": 9.99,
+      "genres": ["Dystopian", "Fiction"],
+      "in_stock": false
+    }
+  ]
+}

@@ -3,10 +3,10 @@ from itertools import permutations
 
 people = ['Alice', 'Bob', 'Carol', 'Dave', 'Eve']
 for order in permutations(people):
-    if (order[1] <= order[3] or order[2] <= order[3]) and \
-       order[0] != 'Bob' and order[4] != 'Bob' and \
-       abs(order.index('Alice') - order.index('Carol')) == 1 and \
-       ('Eve' == order[0] or 'Eve' == order[4]) and \
-       abs(order.index('Alice') - order.index('Carol')) == 2:
+    if (order[0] != 'Bob' and order[-1] != 'Bob' and  # Bob is not at either end
+        order.index('Alice') < order.index('Dave') and  # Alice is somewhere to the left of Dave
+        abs(order.index('Carol') - order.index('Bob')) == 1 and  # Carol is immediately next to Bob
+        (order[0] == 'Eve' or order[-1] == 'Eve') and  # Eve is at one of the ends
+        abs(order.index('Alice') - order.index('Carol')) == 2):  # There is exactly one person between Alice and Carol
         print(order)
 ```

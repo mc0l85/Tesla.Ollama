@@ -1,0 +1,103 @@
+**Step‑by‑step diagnosis**
+
+1. **What the function is supposed to do**  
+   `flatten` should walk through a (potentially) nested collection and return a *single* list that contains every non‑list element in the original order.
+
+2. **What the current implementation actually does**  
+   ```python
+   if type(item) == list:
+       result.extend(flatten(item))
+   else:
+       result.append(item)
+   ```
+   It only recurses when the encountered element is **exactly** of type `list`.  
+   Anything that is *not* a `list` (including tuples, sets, custom containers, etc.) is treated as a leaf value and appended directly.
+
+3. **Why it fails for the test case**  
+   The test input contains a tuple `(2, 3)`.  
+   `type((2, 3))` is `tuple`, not `list`, so the `else` branch runs and the whole tuple is appended as a single element:
+
+   ```python
+   # current output
+   [1, (2, 3), 4, 5]   # <-- the tuple stays intact
+   ```
+
+   The expected output is `[1, 2, 3, 4, 5]`, i.e. the tuple’s contents must be expanded as well.
+
+4. **Root cause**  
+   The function is *list‑type‑specific*. It does not recognize other iterable containers (tuples, sets, etc.) that might also need to be flattened. Consequently, nested non‑list iterables are treated as atomic values, breaking the intended “flatten everything” contract.
+
+---
+
+## Corrected version
+
+Below is a robust implementation that:
+
+* Flattens **any** iterable container (lists, tuples, sets, etc.) **except** strings/bytes (which are usually treated as atomic values).
+* Preserves the original order of elements.
+* Uses `collections.abc.Iterable` for a generic “is‑it‑iterable?” check.
+* Recursively processes each nested iterable.
+
+```python
+from collections.abc import Iterable
+
+def flatten(nested):
+    """
+    Recursively flatten an arbitrarily nested iterable.
+
+    Parameters
+    ----------
+    nested : Iterable
+        The object to flatten. Strings/bytes are treated as atomic values.
+
+    Returns
+    -------
+    list
+        A flat list containing all non‑iterable (or non‑container) elements
+        from ``nested`` in depth‑first order.
+    """
+    flat = []
+
+    for item in nested:
+        # Strings/bytes are iterable but we usually want to keep them intact.
+        if isinstance(item, (str, bytes)):
+            flat.append(item)
+        # If the item is any other iterable (list, tuple, set, etc.) we recurse.
+        elif isinstance(item, Iterable):
+            flat.extend(flatten(item))
+        else:
+            flat.append(item)
+
+    return flat
+
+
+# Example usage
+if __name__ == "__main__":
+    test = [1, (2, 3), [4, [5]]]
+    print(flatten(test))   # -> [1, 2, 3, 4, 5]
+```
+
+### Why this works
+
+| Condition | Action |
+|-----------|--------|
+| `item` is a `str` or `bytes` | Appended directly (strings are iterable but usually should stay whole). |
+| `item` is any other `Iterable` (e.g., list, tuple, set, custom container) | Recursively flatten it and extend the result list. |
+| `item` is a non‑iterable (int, float, custom object, etc.) | Append it directly. |
+
+Because the function now checks for *any* iterable (except strings/bytes), tuples like `(2, 3)` are automatically expanded, giving the correct flattened output.
+
+---
+
+### Optional tweak: Explicitly handling only `list`/`tuple`
+
+If you prefer to keep the function limited to just `list` and `tuple` (a common interview‑style constraint), you can replace the generic `Iterable` test with:
+
+```python
+if isinstance(item, (list, tuple)):
+    flat.extend(flatten(item))
+else:
+    flat.append(item)
+```
+
+The core idea—*recurse on any container type you want to flatten*—remains the same.

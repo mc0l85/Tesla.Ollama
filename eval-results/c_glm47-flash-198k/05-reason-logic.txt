@@ -1,21 +1,25 @@
 Here is the step-by-step reasoning to solve the problem:
 
-**1. Define the variables:**
-Let $B$ represent the amount of wheat produced in Field B.
+**1. Define the variables**
+Let $A$ be the amount of wheat produced in Field A.
+Let $B$ be the amount of wheat produced in Field B.
+Let $C$ be the amount of wheat produced in Field C.
 
-**2. Express the other fields in terms of Field B:**
-*   **Field A** produced twice as much as Field B, so: $A = 2B$
-*   **Field C** produced 10 tons more than Field B, so: $C = B + 10$
+**2. Translate the sentences into equations**
+*   "Field A produced twice as much wheat as Field B":
+    $$A = 2B$$
+*   "Field C produced 10 tons more than Field B":
+    $$C = B + 10$$
+*   "The total harvest was 110 tons":
+    $$A + B + C = 110$$
 
-**3. Set up the equation for the total harvest:**
-The total harvest is the sum of all three fields, which equals 110 tons.
-$$A + B + C = 110$$
+**3. Substitute the expressions into the total equation**
+Since we know $A$ and $C$ are both related to $B$, we can substitute those into the total equation:
 
-**4. Substitute the expressions from Step 2 into the equation:**
 $$(2B) + B + (B + 10) = 110$$
 
-**5. Solve for $B$:**
-Combine the like terms ($2B + B + B$):
+**4. Solve for B**
+Combine the terms:
 $$4B + 10 = 110$$
 
 Subtract 10 from both sides:
@@ -26,11 +30,18 @@ $$B = 25$$
 
 So, Field B produced **25 tons**.
 
-**6. Calculate the production for Field A and Field C:**
-*   **Field A:** $2 \times 25 = 50$ tons
-*   **Field C:** $25 + 10 = 35$ tons
+**5. Solve for A and C**
+Now that we know $B = 25$, we can find the other fields:
+
+*   **Field A:** $A = 2B = 2 \times 25 = 50$
+*   **Field C:** $C = B + 10 = 25 + 10 = 35$
+
+**6. Verify the answer**
+*   Does $A = 2B$? Yes ($50 = 2 \times 25$)
+*   Does $C = B + 10$? Yes ($35 = 25 + 10$)
+*   Does $A + B + C = 110$? Yes ($50 + 25 + 35 = 110$)
 
 **Answer:**
-*   **Field A:** 50 tons
-*   **Field B:** 25 tons
-*   **Field C:** 35 tons
+*   **Field A produced 50 tons**
+*   **Field B produced 25 tons**
+*   **Field C produced 35 tons**

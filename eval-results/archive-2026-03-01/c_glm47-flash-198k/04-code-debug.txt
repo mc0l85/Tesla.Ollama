@@ -1,0 +1,27 @@
+### The Bug
+
+The bug is that the function only checks if an item is exactly a `list` using `type(item) == list`.
+
+In the example `flatten([1, (2, 3), [4, [5]]])`, the second item is a tuple `(2, 3)`. Since a tuple is not a list, the function treats it as a leaf node and appends it to the result as a single element. Consequently, the output becomes `[1, (2, 3), 4, 5]` instead of `[1, 2, 3, 4, 5]`.
+
+### The Fix
+
+To fix this, you should check if the item is an **iterable** (but not a string) using `isinstance(item, (list, tuple))`. This allows the function to handle lists, tuples, and other iterable containers recursively.
+
+### Corrected Code
+
+```python
+def flatten(nested_list):
+    result = []
+    for item in nested_list:
+        # Check if item is a list OR a tuple (or any other iterable)
+        if isinstance(item, (list, tuple)):
+            result.extend(flatten(item))
+        else:
+            result.append(item)
+    return result
+
+# Test cases
+print(flatten([1, (2, 3), [4, [5]]]))  # Output: [1, 2, 3, 4, 5]
+print(flatten([1, (2, 3), [4, [5, (6, 7)]]]))  # Output: [1, 2, 3, 4, 5, 6, 7]
+```

@@ -1,4 +1,4 @@
-The bug is that the function only checks if an item is a list and does not handle other iterable types like tuples. To fix this, we should check if an item is an instance of `collections.abc.Iterable` and not a string (since strings are also iterable).
+The function currently only checks if an item is a list. It does not handle other iterable types like tuples. To fix this, we can use `collections.abc.Iterable` to check for any iterable type.
 
 Here's the corrected version:
 
@@ -8,7 +8,7 @@ from collections.abc import Iterable
 def flatten(nested_list):
     result = []
     for item in nested_list:
-        if isinstance(item, Iterable) and not isinstance(item, str):
+        if isinstance(item, Iterable) and not isinstance(item, (str, bytes)):
             result.extend(flatten(item))
         else:
             result.append(item)
