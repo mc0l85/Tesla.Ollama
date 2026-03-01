@@ -1,0 +1,50 @@
+```python
+def merge_sorted(list1, list2):
+    """
+    Merges two sorted lists of integers into a single sorted list.
+
+    This function iterates through both input lists simultaneously, 
+    comparing elements to determine the next smallest value to add to 
+    the result list. It handles the remaining elements in whichever list 
+    still has items left after the main loop finishes.
+
+    Args:
+        list1 (list of int): The first sorted list of integers.
+        list2 (list of int): The second sorted list of integers.
+
+    Returns:
+        list of int: A new list containing all elements from list1 and list2,
+                     sorted in ascending order.
+    """
+    merged = []
+    i = 0
+    j = 0
+
+    # Traverse both lists while elements exist in both
+    while i < len(list1) and j < len(list2):
+        if list1[i] <= list2[j]:
+            merged.append(list1[i])
+            i += 1
+        else:
+            merged.append(list2[j])
+            j += 1
+
+    # Append any remaining elements from list1
+    # (The slice creates a copy to ensure we don't modify the original list)
+    merged.extend(list1[i:])
+    
+    # Append any remaining elements from list2
+    merged.extend(list2[j:])
+
+    return merged
+
+# --- Test Cases ---
+
+# Test Case 1: Merging two lists of different lengths
+assert merge_sorted([1, 3, 5], [2, 4, 6, 8]) == [1, 2, 3, 4, 5, 6, 8]
+
+# Test Case 2: Merging lists with duplicate elements
+assert merge_sorted([1, 2, 2, 4], [2, 3, 5]) == [1, 2, 2, 2, 3, 4, 5]
+
+print("All tests passed.")
+```

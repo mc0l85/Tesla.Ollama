@@ -20,9 +20,9 @@
 | nemotron-3-nano-30b-128k | 128K | 62% | 12.7 | 8.6 | Thorough, creative | Deduction verbosity |
 | lfm2-24b-a2b-32k | 32K | 100% | 71.5 | 7.9 | Blazing fast, code | Deduction (no answer), creative brevity |
 
-**Speed variants (not separately tested):**
-- `c_qwen3-30b-a3b-144k` -- 100% GPU version (same model, 144K ctx, faster due to no CPU spill)
-- `c_glm47-flash-128k` -- 100% GPU version (same model, 128K ctx, faster due to no CPU spill)
+**Speed variants (100% GPU, tested):**
+- `c_qwen3-30b-a3b-144k` -- 52.2 t/s avg (2.3x faster than 200K variant), score 8.0
+- `c_glm47-flash-128k` -- 41.6 t/s avg (2.4x faster than 198K variant), score 8.5
 
 ---
 
@@ -248,19 +248,73 @@ Each test scored 0--10 based on:
 
 ---
 
+## Speed Variants (100% GPU)
+
+These are the same base models as their max-context counterparts but with reduced context windows to eliminate CPU spill and run entirely on GPU.
+
+---
+
+### 10. qwen3-30b-a3b-144k (Speed Variant)
+
+**Config:** 100% GPU | 52.2 t/s avg | Same model as 200K variant, 144K context
+
+| Test | Score | Notes |
+|---|---|---|
+| 01 Instruct-Format | 10 | Perfect. |
+| 02 Instruct-Conditional | 10 | "Paris 2140526" -- clean one-line answer, no thinking leakage. Major improvement over 200K variant. |
+| 03 Code-Write | 10 | Correct merge_sorted, clean two-pointer approach. |
+| 04 Code-Debug | 4 | Excessive 159-line deliberation, goes back and forth on approach without clean conclusion. |
+| 05 Reason-Logic | 10 | Perfect. Correct answer, clear step-by-step. |
+| 06 Reason-Deduction | 4 | 280 lines of enumeration without committing to final answer. Truncated. |
+| 07 Creative | 9 | Excellent. "Stars weren't burning gas... they were ears." Vivid and unsettling. |
+| 08 Summarize | 10 | Three clear bullets, specific data points. |
+| 09 Structured-JSON | 2 | 150 lines of thinking text, no actual JSON emitted. Truncated. |
+| 10 Long-Output | 9 | Thorough, well-organized, ~798 words. |
+| 11 Tool-Call | 10 | Correct: get_weather(location="Tokyo, Japan", unit="celsius") |
+| **Average** | **8.0** | |
+
+**Notable:** Scores within 0.1 of the 200K variant (8.0 vs 7.9). Thinking leakage is stochastic -- improved on test 02 but worsened on 04/06/09. **2.3x faster** (52 vs 23 t/s). Use this variant when speed matters and 144K context is sufficient.
+
+---
+
+### 11. glm47-flash-128k (Speed Variant)
+
+**Config:** 100% GPU | 41.6 t/s avg | Same model as 198K variant, 128K context
+
+| Test | Score | Notes |
+|---|---|---|
+| 01 Instruct-Format | 10 | Perfect. |
+| 02 Instruct-Conditional | 9 | "Paris 2,161,583" -- correct, concise. |
+| 03 Code-Write | 9 | Correct code, good test cases. Markdown code fences (minor). |
+| 04 Code-Debug | 9 | Correct identification but fix uses isinstance(item, list) instead of (list, tuple). |
+| 05 Reason-Logic | 10 | Perfect. Clear algebra, correct answer. |
+| 06 Reason-Deduction | 5 | Finds valid solution but reasoning has logical errors. |
+| 07 Creative | 9 | Strong. "Stars were not burning balls of gas. They were windows." |
+| 08 Summarize | 9 | Three clean bullets. Good coverage. |
+| 09 Structured-JSON | 6 | Valid JSON but code fences + bare array (prompt said JSON object, no fences). |
+| 10 Long-Output | 9 | Comprehensive, well-organized. |
+| 11 Tool-Call | 9 | Correct tool call, missing unit parameter. |
+| **Average** | **8.5** | |
+
+**Notable:** Scores within 0.1 of the 198K variant (8.5 vs 8.6). Output quality is essentially identical. **2.4x faster** (42 vs 17 t/s). Use this variant when 128K context is sufficient -- same quality, much faster.
+
+---
+
 ## Ranking by Overall Score
 
 | Rank | Model | Score | Speed | Best Use Case |
 |---|---|---|---|---|
 | 1 | **qwen3-14b-40k** | 8.8 | 25.3 t/s | General-purpose default |
-| 2 | **glm47-flash-198k** | 8.6 | 17.0 t/s | Long-context tasks |
+| 2 | **glm47-flash-198k** | 8.6 | 17.0 t/s | Long-context tasks (max 198K) |
 | 2 | **nemotron-3-nano-30b-128k** | 8.6 | 12.7 t/s | Quality-first, long-context |
-| 4 | **qwen3-30b-a3b-200k** | 7.9 | 23.0 t/s | Max context (200K) |
-| 4 | **lfm2-24b-a2b-32k** | 7.9 | 71.5 t/s | Speed-critical applications |
-| 6 | **gemma3-27b-128k** | 7.6 | 13.6 t/s | Creative writing |
-| 7 | **phi4-reasoning-plus-32k** | 7.5 | 21.7 t/s | Math/logic tasks only |
-| 8 | **qwen25-coder-32b-32k** | 7.4 | 12.3 t/s | Code-focused tasks |
-| 9 | **medgemma-27b-128k** | 6.6 | 13.5 t/s | Medical domain only |
+| 2 | **glm47-flash-128k** | 8.5 | 41.6 t/s | Fast long-context (100% GPU) |
+| 5 | **qwen3-30b-a3b-144k** | 8.0 | 52.2 t/s | Fast extraction (100% GPU) |
+| 5 | **qwen3-30b-a3b-200k** | 7.9 | 23.0 t/s | Max context extraction (200K) |
+| 5 | **lfm2-24b-a2b-32k** | 7.9 | 71.5 t/s | Speed-critical applications |
+| 8 | **gemma3-27b-128k** | 7.6 | 13.6 t/s | Creative writing |
+| 9 | **phi4-reasoning-plus-32k** | 7.5 | 21.7 t/s | Math/logic tasks only |
+| 10 | **qwen25-coder-32b-32k** | 7.4 | 12.3 t/s | Code-focused tasks |
+| 11 | **medgemma-27b-128k** | 6.6 | 13.5 t/s | Medical domain only |
 
 ---
 
@@ -283,7 +337,8 @@ The seating puzzle proved the most challenging test. Valid solutions include bot
 ### Speed vs. Quality Tradeoffs
 - **lfm2-24b** at 71.5 t/s is 5.8x faster than the slowest model (qwen25-coder at 12.3 t/s) while scoring higher
 - **qwen3-14b** offers the best balance: 25.3 t/s with the highest quality score (8.8)
-- Models with CPU spill (qwen3-30b, glm47-flash) pay a speed penalty for their larger context windows
+- **Speed variants eliminate CPU spill penalty:** qwen3-30b-144k runs 2.3x faster (52 vs 23 t/s), glm47-flash-128k runs 2.4x faster (42 vs 17 t/s) with identical quality
+- Use max-context variants (200K/198K) only when you need the extra context -- otherwise the speed variants are strictly better
 
 ---
 

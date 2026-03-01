@@ -1,0 +1,39 @@
+Here is the step-by-step solution:
+
+**1. Identify the variables**
+Let's assign a variable to the amount of wheat produced by Field B.
+*   Let $B$ = Tons of wheat from Field B.
+
+**2. Create expressions for the other fields**
+*   Field A produced twice as much as Field B:
+    $$A = 2B$$
+*   Field C produced 10 tons more than Field B:
+    $$C = B + 10$$
+
+**3. Set up the equation**
+The total harvest is 110 tons, so the sum of the three fields equals 110:
+$$A + B + C = 110$$
+
+**4. Substitute the expressions into the equation**
+Replace $A$ and $C$ with the expressions we found in step 2:
+$$(2B) + B + (B + 10) = 110$$
+
+**5. Solve for B**
+Combine the $B$ terms:
+$$4B + 10 = 110$$
+
+Subtract 10 from both sides:
+$$4B = 100$$
+
+Divide by 4:
+$$B = 25$$
+
+**6. Find the values for A and C**
+Now that we know $B = 25$, we can calculate the other fields:
+*   **Field A:** $2 \times 25 = 50$
+*   **Field C:** $25 + 10 = 35$
+
+**Answer:**
+*   **Field A produced 50 tons**
+*   **Field B produced 25 tons**
+*   **Field C produced 35 tons**

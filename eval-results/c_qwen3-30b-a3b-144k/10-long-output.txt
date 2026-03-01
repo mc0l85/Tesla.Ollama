@@ -1,0 +1,27 @@
+### CPU Execution: From Binary Loading to Program Termination
+
+The execution of a program by a CPU is a meticulously orchestrated sequence governed by hardware and firmware. It begins when the operating system (OS) loads the program’s binary executable into physical memory. The binary, typically in formats like ELF (Linux) or PE (Windows), contains machine code, data, and metadata. The OS parses this binary, maps code/data sections into virtual memory, initializes the stack (for local variables/function calls) and heap (for dynamic allocation), and sets the **entry point** (e.g., `main()`). Crucially, the OS loads the **Program Counter (PC)**, or instruction pointer (IP), with the address of the first executable instruction. This PC is a special register that tracks the memory address of the *next* instruction to execute.
+
+Execution proceeds via the **fetch-decode-execute cycle**, repeated for every instruction:
+
+1. **Fetch**: The CPU reads the instruction from memory at the current PC value. This instruction is placed into the **Instruction Register (IR)**. The PC is automatically incremented (typically by 4 bytes for 32-bit instructions or 8 bytes for 64-bit) to point to the next sequential instruction. *Registers involved: PC (source), IR (destination).*
+
+2. **Decode**: The CPU’s **control unit** interprets the opcode (operation code) in the IR. It identifies the instruction type (e.g., `ADD`, `JMP`, `LOAD`), decodes operands (which may be register numbers or immediate values), and determines which **general-purpose registers (GPRs)** to access. For example, an `ADD R1, R2, R3` instruction requires reading R1 and R2. *Registers involved: IR (source), GPRs (source), control unit (decoder).*
+
+3. **Execute**: The **Arithmetic Logic Unit (ALU)** performs the operation. The ALU receives operands from GPRs (e.g., values in R1 and R2 for `ADD`). It executes the operation (arithmetic, bitwise, or comparison), produces a result, and updates **status flags** in a dedicated **Flags Register** (e.g., Zero Flag (ZF) for equality, Carry Flag (CF) for overflow). *Critical: The ALU is synchronous, operating on clock cycles; its output is written back to a GPR (e.g., R3) or flags register.* For instance, `ADD R1, R2, R3` writes the sum to R3 and sets ZF if the result is zero.
+
+**Branching** alters the sequential flow. Conditional branches (e.g., `JE`, `JZ`—jump if zero) check the Flags Register. If the Zero Flag (ZF) is set (result was zero), the control unit *overwrites the PC* with the target address (e.g., `0x1000`). Unconditional branches (e.g., `JMP`) directly set the PC. This update breaks the fetch cycle’s sequential progression, as the next fetch uses the new PC value. *Registers involved: PC (modified), Flags Register (source for condition).*
+
+**Registers** are the CPU’s high-speed storage. **GPRs** (e.g., EAX, R15) hold operands/data during execution. **Special-purpose registers** include:
+- **PC/IR**: Tracks instruction flow.
+- **Stack Pointer (SP)**: Points to the top of the stack (manages function calls).
+- **Flags Register**: Stores ALU results (ZF, CF, etc.) for branching.
+
+**Termination** occurs when the program executes an **exit system call** (e.g., `exit()` in Linux, `sys_exit`). The OS handles this via:
+1. The program writes an **exit status** (e.g., 0 for success) into a designated register (e.g., EAX in x86) or memory.
+2. The CPU triggers the system call (via `INT 0x80` or `syscall` instruction).
+3. The OS **validates the status**, terminates the process, frees memory (stack, heap), and returns control to the OS scheduler. The PC is never incremented beyond the `exit()` call—execution halts.
+
+**Key Integration**: The ALU’s flag updates (e.g., ZF) directly enable conditional branching. The PC’s value (modified by branches) dictates the fetch address. GPRs supply operands to the ALU. Termination is a controlled OS intervention, not a CPU-native event.
+
+This cycle—fetch (PC → IR), decode (IR → control unit), execute (ALU → GPRs/flags)—repeats at gigahertz speeds. Each instruction’s execution consumes one or more clock cycles. Branches may stall the pipeline (a microarchitectural detail), but the core flow remains governed by registers, the ALU, and the PC. The OS ensures the binary’s correct loading, while the CPU executes it through the relentless, precise fetch-decode-execute cycle. (Word count: 798)

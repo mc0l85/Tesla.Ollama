@@ -1,0 +1,29 @@
+### The Bug
+
+The bug is in the condition: `if type(item) == list:`.
+
+In Python, tuples, sets, strings, and other non-list iterables are **not** instances of the `list` class. Therefore, the code treats a tuple `(2, 3)` or a string as a non-list item and tries to append it directly to the result. This prevents the recursive flattening of those nested structures.
+
+### The Fix
+
+You should use the `isinstance()` function instead of `type()`. This checks if an object is an instance of a class or any of its subclasses.
+
+```python
+def flatten(nested_list):
+    result = []
+    for item in nested_list:
+        # Changed 'type(item) == list' to 'isinstance(item, list)'
+        if isinstance(item, list):
+            result.extend(flatten(item))
+        else:
+            result.append(item)
+    return result
+
+# Corrected version works for tuples, sets, and strings too:
+print(flatten([1, (2, 3), [4, [5]]]))  # Output: [1, 2, 3, 4, 5]
+```
+
+### Why `isinstance` is preferred
+Using `isinstance` is generally safer and more Pythonic than `type(item) == list` for two reasons:
+1.  **Subclasses:** If you ever create a custom class that inherits from `list`, `isinstance` will recognize it as a list, whereas `type` will treat it as a separate class.
+2.  **Context:** It allows you to check for multiple types (e.g., `isinstance(item, (list, tuple))`) if you want to flatten those specific structures.

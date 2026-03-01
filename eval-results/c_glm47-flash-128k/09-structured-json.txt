@@ -1,0 +1,28 @@
+```json
+[
+  {
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald",
+    "year": 1925,
+    "price": 10.99,
+    "genres": ["Classic", "Fiction"],
+    "in_stock": true
+  },
+  {
+    "title": "1984",
+    "author": "George Orwell",
+    "year": 1949,
+    "price": 8.50,
+    "genres": ["Dystopian", "Science Fiction"],
+    "in_stock": true
+  },
+  {
+    "title": "To Kill a Mockingbird",
+    "author": "Harper Lee",
+    "year": 1960,
+    "price": 12.00,
+    "genres": ["Fiction", "Southern Gothic"],
+    "in_stock": false
+  }
+]
+```

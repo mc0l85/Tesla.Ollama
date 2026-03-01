@@ -1,0 +1,28 @@
+Here is the step-by-step solution to determine the seating order:
+
+1.  **Analyze the positions:** There are 5 chairs. Let's label them Left to Right as: **1, 2, 3, 4, 5**.
+2.  **Apply Clue 4 (Eve at an end):** Eve is in Chair 1 or Chair 5.
+3.  **Apply Clue 1 (Bob is not at an end):** Bob cannot be in Chair 1 or Chair 5. This means Bob must be in Chair 2, 3, or 4.
+4.  **Apply Clue 3 (Carol is next to Bob):** Since Carol is immediately next to Bob, and Bob is not at an end, Bob cannot be in Chair 2 (because there is no chair to his left for Carol) and cannot be in Chair 4 (because there is no chair to his right for Carol).
+    *   Therefore, **Bob must be in Chair 3**.
+5.  **Place Carol:** Since Carol is next to Bob (Chair 3), she must be in Chair 2 or Chair 4.
+6.  **Apply Clue 5 (One person between Alice and Carol):**
+    *   If Carol is in Chair 2, Alice would need to be in Chair 4 (2 + 2).
+    *   If Carol is in Chair 4, Alice would need to be in Chair 2 (4 - 2).
+    *   In either case, Alice and Carol are in Chairs 2 and 4, with Bob in Chair 3 separating them.
+7.  **Apply Clue 2 (Alice is left of Dave):** Dave must be to the right of Alice.
+    *   If Alice is in Chair 2, Dave must be in Chair 5 (since Chair 4 is taken by Carol).
+    *   If Alice is in Chair 4, Dave would have to be in Chair 5.
+    *   In both scenarios, Dave ends up in Chair 5.
+8.  **Place Eve:** Since Dave is in Chair 5, Eve must be in Chair 1 (from Clue 4).
+9.  **Place the remaining person:** The only person left is Carol, and the only remaining chair is Chair 2.
+
+**The Seating Order:**
+
+**1. Eve**
+**2. Carol**
+**3. Bob**
+**4. Alice**
+**5. Dave**
+
+**Final Order (Left to Right):** Eve, Carol, Bob, Alice, Dave.

@@ -1,0 +1,3 @@
+- CRISPR-Cas9, originally a bacterial immune system, was adapted by Doudna and Charpentier for precise DNA editing in 2012, earning them the 2020 Nobel Prize in Chemistry.  
+- The technology is now widely applied across agriculture (disease-resistant crops), medicine (FDA-approved sickle cell therapy in 2023), and basic research, driving significant therapeutic innovation.  
+- Despite ethical concerns over germline editing (exemplified by the 2018 He Jiankui case) and calls for regulation, CRISPR-based startups attracted over $5 billion in investment in 2023, reflecting strong commercial confidence.

@@ -1,0 +1,71 @@
+To determine how many tons of wheat each field produced, we start by defining variables based on the relationships given in the problem.
+
+---
+
+### Step 1: Define Variables
+
+Let:
+- $ B $ = amount of wheat produced by **Field B** (in tons)
+
+From the problem:
+- **Field A** produced **twice as much** as Field B → $ A = 2B $
+- **Field C** produced **10 tons more** than Field B → $ C = B + 10 $
+
+---
+
+### Step 2: Use Total Harvest to Form an Equation
+
+The total harvest from all three fields is 110 tons:
+
+$$
+A + B + C = 110
+$$
+
+Substitute the expressions for $ A $ and $ C $ in terms of $ B $:
+
+$$
+2B + B + (B + 10) = 110
+$$
+
+Simplify:
+
+$$
+2B + B + B + 10 = 110 \\
+4B + 10 = 110
+$$
+
+---
+
+### Step 3: Solve for $ B $
+
+$$
+4B = 100 \\
+B = \frac{100}{4} = 25
+$$
+
+So, **Field B produced 25 tons**.
+
+---
+
+### Step 4: Calculate Production for Fields A and C
+
+- **Field A**: $ A = 2B = 2 \times 25 = 50 $ tons  
+- **Field C**: $ C = B + 10 = 25 + 10 = 35 $ tons
+
+---
+
+### Step 5: Verify the Total
+
+$$
+A + B + C = 50 + 25 + 35 = 110 \text{ tons}
+$$
+
+This matches the given total, confirming our solution is correct.
+
+---
+
+### ✅ Final Answer:
+
+- **Field A**: **50 tons**  
+- **Field B**: **25 tons**  
+- **Field C**: **35 tons**

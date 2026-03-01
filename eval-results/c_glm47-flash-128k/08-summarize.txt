@@ -1,0 +1,3 @@
+*   Discovered as a bacterial defense mechanism, CRISPR-Cas9 was reprogrammed by Doudna and Charpentier to cut DNA at specific locations, earning them the 2020 Nobel Prize in Chemistry.
+*   The technology has been successfully applied to agriculture, medicine, and basic research, leading to the creation of disease-resistant crops and the first FDA-approved gene therapy for sickle cell disease.
+*   Despite its immense therapeutic potential, CRISPR faces significant ethical hurdles and strict regulatory calls following the international condemnation of germline editing experiments.

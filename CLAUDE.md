@@ -77,6 +77,8 @@ Temperature varies by model purpose: 0.1 for structured tasks (lfm2), 0.7 for ge
 | c_qwen3-14b-40k | 8.8 | 25 | 40K | 100% | Default general-purpose |
 | c_glm47-flash-198k | 8.6 | 17 | 198K | 89% | Long-context generalist |
 | c_nemotron-3-nano-30b-128k | 8.6 | 13 | 128K | 62% | Technical writing, creative, long-context |
+| c_glm47-flash-128k | 8.5 | 42 | 128K | 100% | Fast long-context (speed variant) |
+| c_qwen3-30b-a3b-144k | 8.0 | 52 | 144K | 100% | Fast extraction (speed variant) |
 | c_qwen3-30b-a3b-200k | 7.9 | 23 | 200K | 91% | Max context extraction (200K) |
 | c_lfm2-24b-a2b-32k | 7.9 | 72 | 32K | 100% | Speed-critical, pipelines |
 | c_gemma3-27b-128k | 7.6 | 14 | 128K | 100% | Creative writing (no tool calling) |
