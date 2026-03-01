@@ -80,9 +80,12 @@ Temperature varies by model purpose: 0.1 for structured tasks (lfm2), 0.7 for ge
 | c_glm47-flash-198k | 7.9 | 13 | 200K | Long-context generalist |
 | c_qwen3-30b-a3b-200k | 7.0 | 19 | 200K | Extraction (200K ingestion) |
 | c_gemma3-27b-128k | 6.7 | 13 | 128K | Creative writing (no tool calling) |
+| c_phi4-reasoning-plus-32k | 4.1* | 16 | 32K | Deep reasoning (needs generous num_predict) |
 | c_qwen25-coder-32b-32k | 6.7 | 12 | 32K | Code generation only |
 
-**Broken/limited models:** phi4-reasoning (needs 2000+ token budget), gpt-oss-20b (short-response only), qwen25-coder-7b (non-functional, should be retired).
+*phi4-reasoning scored low due to eval token budget truncation, not model quality. Its thinking chains consume `num_predict` tokens — eval limits have been increased to 1500-3000 to fix this. Re-eval needed.
+
+**Retired models:** `c_qwen25-coder-7b-32k` (non-functional garbled output) and `c_gpt-oss-20b-128k` (think:false broken, catastrophic degeneration) have been removed from the fleet.
 
 **Tool calling works with:** qwen3-14b, lfm2-24b, qwen3-30b. Broken on gemma3, medgemma, phi4-reasoning (HTTP 400).
 
@@ -107,6 +110,26 @@ All scripts use the Ollama REST API directly (not the CLI for inference):
 - **Unload:** `POST /api/generate` with `keep_alive: 0`
 
 Always pass `think: false` for fair comparisons — thinking models (qwen3, phi4, nemotron) consume `num_predict` tokens on internal reasoning otherwise.
+
+## Temporary Passwordless Sudo (for deployment)
+
+deploy.sh requires passwordless sudo for systemctl, nvidia-smi, and sysctl. To grant temporary access:
+
+```bash
+# Grant (run on server as root or with existing sudo)
+ssh myron@10.80.4.228 "echo 'myron ALL=(ALL) NOPASSWD: ALL' | sudo tee /etc/sudoers.d/temp-myron"
+```
+
+**IMPORTANT: Removal of temporary sudo requires human approval.** Do not automatically remove it — always ask the user before running:
+```bash
+# Remove (REQUIRES HUMAN APPROVAL)
+ssh myron@10.80.4.228 "sudo rm /etc/sudoers.d/temp-myron"
+```
+
+For permanent scoped access (preferred over temp ALL), the server uses `/etc/sudoers.d/ollama-tuning`:
+```
+myron ALL=(ALL) NOPASSWD: /usr/bin/nvidia-smi, /usr/bin/systemctl daemon-reload, /usr/bin/systemctl restart ollama, /usr/sbin/sysctl, /usr/local/bin/update-ollama-override
+```
 
 ## Deploying Changes
 

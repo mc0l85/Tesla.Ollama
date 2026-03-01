@@ -37,11 +37,9 @@ ALL_MODELS=(
     "c_glm47-flash-198k"
     "c_gemma3-27b-128k"
     "c_medgemma-27b-128k"
-    "c_gpt-oss-20b-128k"
     "c_qwen3-14b-40k"
     "c_phi4-reasoning-plus-32k"
     "c_qwen25-coder-32b-32k"
-    "c_qwen25-coder-7b-32k"
     "c_nemotron-3-nano-30b-32k"
     "c_lfm2-24b-a2b-32k"
 )
@@ -76,21 +74,24 @@ TEST_IDS=(
 )
 
 get_num_predict() {
-    # Minimum 500 tokens — models like qwen3 produce verbose CoT reasoning
-    # as regular text (even with think:false) and need room to finish.
-    # Non-verbose models will stop early (done_reason: stop).
+    # Generous token budgets — thinking models (phi4-reasoning, nemotron) generate
+    # long internal reasoning chains that consume num_predict tokens even with
+    # think:false (reasoning bleeds into content). Previous limits (500-800)
+    # caused phi4-reasoning to score 4.1 due to truncation, not model quality.
+    # Non-verbose models will stop early (done_reason: stop), so higher limits
+    # are safe — they only cost time on models that actually use the tokens.
     case "$1" in
-        01-instruct-format)      echo 500 ;;
-        02-instruct-conditional) echo 500 ;;
-        03-code-write)           echo 800 ;;
-        04-code-debug)           echo 800 ;;
-        05-reason-logic)         echo 600 ;;
-        06-reason-deduction)     echo 800 ;;
-        07-creative)             echo 800 ;;
-        08-summarize)            echo 500 ;;
-        09-structured-json)      echo 500 ;;
-        10-long-output)          echo 1500 ;;
-        11-tool-call)            echo 500 ;;
+        01-instruct-format)      echo 1500 ;;
+        02-instruct-conditional) echo 1500 ;;
+        03-code-write)           echo 2500 ;;
+        04-code-debug)           echo 2500 ;;
+        05-reason-logic)         echo 2000 ;;
+        06-reason-deduction)     echo 2500 ;;
+        07-creative)             echo 2500 ;;
+        08-summarize)            echo 1500 ;;
+        09-structured-json)      echo 1500 ;;
+        10-long-output)          echo 3000 ;;
+        11-tool-call)            echo 1500 ;;
     esac
 }
 

@@ -111,7 +111,6 @@ echo ""
 
 echo "  Creating custom models from modelfiles..."
 MODELS=(
-    "c_gpt-oss-20b-128k"
     "c_gemma3-27b-128k"
     "c_qwen25-coder-32b-32k"
     "c_glm47-flash-198k"
@@ -121,7 +120,6 @@ MODELS=(
     "c_glm47-flash-extract"
     "c_qwen3-30b-a3b-200k"
     "c_qwen3-14b-40k"
-    "c_qwen25-coder-7b-32k"
     "c_lfm2-24b-a2b-32k"
 )
 
