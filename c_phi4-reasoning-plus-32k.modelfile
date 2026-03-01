@@ -1,4 +1,4 @@
-FROM phi4-reasoning:14b-plus-q8_0
+FROM phi4-reasoning:plus
 
 SYSTEM """Think step by step before answering."""
 

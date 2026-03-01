@@ -2,9 +2,10 @@ FROM nemotron-3-nano:30b
 
 SYSTEM """Think step by step before answering."""
 
+PARAMETER num_gpu 30
 PARAMETER num_thread 46
 PARAMETER num_batch 2048
-PARAMETER num_ctx 32768
+PARAMETER num_ctx 131072
 PARAMETER num_keep 24
 PARAMETER num_predict 16384
 PARAMETER temperature 0.6

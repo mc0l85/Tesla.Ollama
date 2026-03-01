@@ -1,0 +1,12 @@
+FROM glm-4.7-flash:q4_K_M
+
+SYSTEM """You are a helpful AI assistant."""
+
+PARAMETER num_thread 46
+PARAMETER num_batch 2048
+PARAMETER num_ctx 131072
+PARAMETER num_keep 24
+PARAMETER temperature 0.7
+PARAMETER top_p 0.9
+PARAMETER min_p 0.01
+PARAMETER repeat_penalty 1.05

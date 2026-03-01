@@ -40,7 +40,7 @@ ALL_MODELS=(
     "c_qwen3-14b-40k"
     "c_phi4-reasoning-plus-32k"
     "c_qwen25-coder-32b-32k"
-    "c_nemotron-3-nano-30b-32k"
+    "c_nemotron-3-nano-30b-128k"
     "c_lfm2-24b-a2b-32k"
 )
 

@@ -72,20 +72,30 @@ Temperature varies by model purpose: 0.1 for structured tasks (lfm2), 0.7 for ge
 
 ## Model Fleet (ranked by eval score)
 
-| Model | Score | Gen t/s | Context | Best For |
-|---|---|---|---|---|
-| c_qwen3-14b-40k | 9.0 | 25 | 40K | Default general-purpose |
-| c_lfm2-24b-a2b-32k | 8.9 | 67 | 32K | Speed-critical, pipelines |
-| c_nemotron-3-nano-30b-32k | 8.4 | 14 | 32K | Technical writing, code review |
-| c_glm47-flash-198k | 7.9 | 13 | 200K | Long-context generalist |
-| c_qwen3-30b-a3b-200k | 7.0 | 19 | 200K | Extraction (200K ingestion) |
-| c_gemma3-27b-128k | 6.7 | 13 | 128K | Creative writing (no tool calling) |
-| c_phi4-reasoning-plus-32k | 4.1* | 16 | 32K | Deep reasoning (needs generous num_predict) |
-| c_qwen25-coder-32b-32k | 6.7 | 12 | 32K | Code generation only |
+| Model | Score | Gen t/s | Context | GPU% | Best For |
+|---|---|---|---|---|---|
+| c_qwen3-14b-40k | 9.0 | 25 | 40K | 100% | Default general-purpose |
+| c_lfm2-24b-a2b-32k | 8.9 | 67 | 32K | 100% | Speed-critical, pipelines |
+| c_nemotron-3-nano-30b-128k | 8.4 | ~10 | 128K | 61% | Technical writing, long-context analysis |
+| c_glm47-flash-198k | 7.9 | 13 | 200K | 89% | Long-context generalist |
+| c_qwen3-30b-a3b-200k | 7.0 | 19 | 200K | 100% | Extraction (200K ingestion) |
+| c_gemma3-27b-128k | 6.7 | 13 | 128K | 100% | Creative writing (no tool calling) |
+| c_phi4-reasoning-plus-32k | 4.1* | 16 | 32K | 100% | Deep reasoning (needs generous num_predict) |
+| c_qwen25-coder-32b-32k | 6.7 | 12 | 32K | 100% | Code generation only |
 
-*phi4-reasoning scored low due to eval token budget truncation, not model quality. Its thinking chains consume `num_predict` tokens — eval limits have been increased to 1500-3000 to fix this. Re-eval needed.
+*phi4-reasoning scored low due to eval token budget truncation, not model quality. Eval limits have been increased to 1500-3000. Re-eval needed.
 
-**Retired models:** `c_qwen25-coder-7b-32k` (non-functional garbled output) and `c_gpt-oss-20b-128k` (think:false broken, catastrophic degeneration) have been removed from the fleet.
+### Context window notes
+
+Ollama clamps `num_ctx` to the model's native context length — you cannot exceed it. Most models are already at their native max. The 24GB VRAM budget is the binding constraint for large-context models (qwen3-30b, glm47-flash, gemma3, nemotron).
+
+- **phi4-reasoning** switched from Q8_0 (17GB) to Q4_K_M (11GB) — saves 6GB VRAM, same 32K native limit
+- **nemotron-3-nano** uses partial CPU offload (`num_gpu 30`, 61% GPU) because 24GB weights won't fit with KV cache. Context pushed from broken/unloadable 32K to 128K
+- **qwen3-30b** has two variants: 200K (spills ~9% to CPU) and **144K** (100% GPU speed variant)
+- **glm47-flash** has two variants: 198K (spills ~11% to CPU) and **128K** (100% GPU speed variant)
+- **qwen3-14b** and **lfm2** have VRAM headroom but are capped by their 40K/32K native context
+
+**Retired models:** `c_qwen25-coder-7b-32k` (non-functional) and `c_gpt-oss-20b-128k` (degenerate output) removed.
 
 **Tool calling works with:** qwen3-14b, lfm2-24b, qwen3-30b. Broken on gemma3, medgemma, phi4-reasoning (HTTP 400).
 
