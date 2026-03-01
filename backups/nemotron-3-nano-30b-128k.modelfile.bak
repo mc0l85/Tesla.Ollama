@@ -1,0 +1,11 @@
+FROM nemotron-3-nano:30b
+
+SYSTEM """You are an expert in logical deduction and step-by-step reasoning."""
+
+PARAMETER num_gpu 999
+PARAMETER num_thread 46
+PARAMETER num_batch 2048
+PARAMETER num_ctx 32768
+PARAMETER temperature 0.6
+PARAMETER top_p 0.9
+PARAMETER repeat_penalty 1.1

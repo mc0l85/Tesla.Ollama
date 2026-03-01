@@ -1,0 +1,11 @@
+The CPU executes a program by several key steps:
+
+ as follows:
+
+:
+
+:
+
+
+
+1. **Loading the Binary into memory**: The programuor's operating system loads the binary executable file the program into RAM (Random Access Memory)).. This is is divided into pagespages, EachUeach page page is is is allocatedlocated to store the binarycode code of code code code code code code code code code code code code code code code code code code code code code code code code code code code code code code code

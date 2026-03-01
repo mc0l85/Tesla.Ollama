@@ -1,0 +1,1 @@
+{"model":"c_qwen25-coder-32b-32k","created_at":"2026-03-01T06:10:07.733586223Z","message":{"role":"assistant","content":"Paris"},"done":true,"done_reason":"stop","total_duration":508046967,"load_duration":110069422,"prompt_eval_count":73,"prompt_eval_duration":302889744,"eval_count":2,"eval_duration":82866443}

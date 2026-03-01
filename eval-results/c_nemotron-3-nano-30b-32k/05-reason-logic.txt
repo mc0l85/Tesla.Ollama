@@ -1,0 +1,58 @@
+**Step‑by‑step reasoning**
+
+1. **Introduce variables**  
+   Let  
+   - \(B\) = tons of wheat produced by Field B  
+   - \(A\) = tons of wheat produced by Field A  
+   - \(C\) = tons of wheat produced by Field C  
+
+2. **Translate the word problem into equations**  
+   - “Field A produced twice as much wheat as Field B.”  
+     \[
+     A = 2B
+     \]
+   - “Field C produced 10 tons more than Field B.”  
+     \[
+     C = B + 10
+     \]
+   - “The total harvest was 110 tons.”  
+     \[
+     A + B + C = 110
+     \]
+
+3. **Substitute the expressions for \(A\) and \(C\) into the total‑harvest equation**  
+   \[
+   (2B) + B + (B + 10) = 110
+   \]
+
+4. **Simplify the equation**  
+   \[
+   2B + B + B + 10 = 110 \\
+   4B + 10 = 110
+   \]
+
+5. **Solve for \(B\)**  
+   \[
+   4B = 110 - 10 \\
+   4B = 100 \\
+   B = \frac{100}{4} = 25
+   \]
+
+6. **Find \(A\) and \(C\) using the relationships**  
+   - \(A = 2B = 2 \times 25 = 50\)  
+   - \(C = B + 10 = 25 + 10 = 35\)
+
+7. **Check the solution**  
+   \[
+   A + B + C = 50 + 25 + 35 = 110
+   \]
+   The sum matches the given total, confirming the solution is consistent.
+
+---
+
+### Answer
+- **Field A:** 50 tons  
+- **Field B:** 25 tons  
+- **Field C:** 35 tons  
+
+These amounts satisfy all the conditions of the problem.

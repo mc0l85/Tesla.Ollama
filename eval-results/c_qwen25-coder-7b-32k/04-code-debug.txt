@@ -1,0 +1,19 @@
+The code has has a logical error in the nested loop structure checking if an item is is a list. The correct for should be be `if isinstance(item, list):`.
+
+Here is the corrected version:
+
+```python
+ def flatten(nested_list):
+ 
+    result = []
+     for item in nested_list:
+ 
+         if isinstanceitem, list]: 
+             result result sub in flatten(item): 
+ 
+             result.extend(flatten(sub))
+ 
+         else: 
+             result.append(item 
+ 
+     return result```

@@ -1,0 +1,17 @@
+### CPU Program Execution: From Binary to Termination
+
+**1. Program Loading (OS/Memory Management)**  
+The execution begins when the operating system (OS) loads the compiled program (a binary executable) into physical RAM. The loader component of the OS:  
+- Reads the binary (e.g., ELF format) from storage, identifying the program’s code, data, and metadata (e.g., entry point address `0x400000` in x86).  
+- Maps segments (code, data, stack) to virtual memory addresses, resolving relocations (adjusting addresses for memory layout).  
+- Initializes critical registers: The **Program Counter (PC)** is set to the entry point (e.g., `0x400000`), and the **Stack Pointer (SP)** points to the top of the stack (e.g., `0x7fffffffe000`).  
+- Memory is allocated for the process’s address space, with the CPU’s Memory Management Unit (MMU) translating virtual to physical addresses.
+
+**2. The Fetch-Decode-Execute Cycle**  
+The CPU continuously cycles through these steps, driven by a clock signal:  
+- **Fetch**: The current PC value is copied to the **Memory Address Register (MAR)**. The CPU reads the instruction from RAM (via the **Memory Data Register, MDR**) and loads it into the **Instruction Register (IR)**. The PC is incremented (e.g., by 1 for byte-addressable systems) to point to the next instruction.  
+- **Decode**: The IR’s opcode (e.g., `0x55` for `push rbp` in x86) is analyzed. The control unit (hardwired or microcode-based) generates signals to:  
+  - Select source/destination registers (e.g., `RBX` for a register operand).  
+  - Configure the **Arithmetic Logic Unit (ALU)** for the required operation (e.g., `ADD`, `JMP`).  
+  - Determine operand addressing (e.g., immediate value, memory address via `MAR`).  
+- **Execute**: The ALU performs the operation using values from **registers** (e.g., `RAX`, `RBX`). The result updates the **Flag Register** (e

@@ -1,0 +1,1 @@
+{"model":"c_qwen25-coder-7b-32k","created_at":"2026-03-01T06:14:24.736900484Z","message":{"role":"assistant","content":"```current for Tokyo"},"done":true,"done_reason":"stop","total_duration":401757419,"load_duration":106374473,"prompt_eval_count":191,"prompt_eval_duration":191337753,"eval_count":5,"eval_duration":81299887}

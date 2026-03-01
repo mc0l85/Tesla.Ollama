@@ -1,0 +1,18 @@
+The issue with the function is that it only checks if an item is a list using `type(item) == list`. This means it won't handle other types of iterable objects like tuples.
+
+To fix this, you can use the `isinstance()` function to check if an item is an instance of a list or a tuple. Here's the corrected version:
+
+```python
+def flatten(nested_list):
+    result = []
+    for item in nested_list:
+        if isinstance(item, (list, tuple)):
+            result.extend(flatten(item))
+        else:
+            result.append(item)
+    return result
+
+print(flatten([1, (2, 3), [4, [5]]]))  # Output: [1, 2, 3, 4, 5]
+```
+
+This version will correctly handle any type of iterable nesting, including lists, tuples, and potentially other iterable types if needed. However, be aware that this function will still fail if the input contains other types of iterable objects that are not handled by the `isinstance()` check. If you need to handle more types of iterables, you can add them to the tuple in the `isinstance()` call.

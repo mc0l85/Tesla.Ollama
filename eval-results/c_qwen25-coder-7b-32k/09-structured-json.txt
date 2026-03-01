@@ -1,0 +1,26 @@
+```json
+[
+  {
+    "title": "Book",
+    "author": "作者A",
+                ": 1,
+                " price": 19.99",
+                "genres": [" "小说", "科幻" "冒险" ],
+                "in_stock": true
+ 
+  },
+  {
+    "title": "那2",
+    "author": "作者B",
+    "pages": 230",
+    "price": 29.99,
+ 
+       genres        "genres": [ "历史", "传记" ],
+    "instock": true
+ 
+  },
+  {
+    "title": "那3",
+    "author": "AuthorCC",
+    "pages": 150,
+    "price": 39.```

@@ -1,0 +1,34 @@
+When a computer “runs” a program, it goes through a multi-step process that begins with loading an executable binary into memory and ends when the program terminates. This process involves a tightly coordinated interaction between hardware components—the CPU, memory, registers, the Arithmetic Logic Unit (ALU), and control logic. Here’s a detailed breakdown of each phase:
+
+1. Loading the Binary into Memory
+
+Before execution begins, an operating system (OS) or bootloader loads the binary file (typically an ELF, PE, or Mach-O file, depending on the platform) from persistent storage (such as a hard drive or SSD) into the system’s RAM. This loader performs several tasks:
+ • Parsing the binary’s header to determine segment boundaries, entry points, and memory layout.
+ • Allocating memory regions for code, data, and stack.
+ • Copying executable code into a designated memory area.
+ • Setting up any necessary environment (e.g., initializing the stack pointer and register values).
+Once the binary is loaded, the CPU’s program counter (PC) is set to the entry point, and execution of instructions begins.
+
+2. The Fetch–Decode–Execute Cycle
+
+The heart of CPU operation is the fetch–decode–execute cycle, a repetitive loop that processes one instruction at a time:
+ a. Fetch:
+  • The CPU uses the PC to read the address of the next instruction from memory.
+  • This address is placed on the memory bus, and the instruction bytes are fetched from RAM into an internal register known as the instruction register (IR).
+  • After fetching, the PC is incremented to point to the next instruction, though this increment might be adjusted later if a branch or jump occurs.
+
+ b. Decode:
+  • The fetched binary instruction is decoded by the CPU’s control unit, which interprets the opcode (operation code) and any operand(s) encoded in the instruction.
+  • This stage may involve translating complex instructions into a series of micro-operations (microcode) that the hardware can execute.
+  • The decoding process generates control signals that determine which registers, ALU functions, or memory accesses are required.
+
+ c. Execute:
+  • Based on the decoded instruction, the CPU performs the required operation. For example, if the instruction is an arithmetic operation (like ADD or SUB), the CPU loads the necessary operands from registers or memory.
+  • The ALU is engaged to perform the arithmetic or logical operation.
+  • The result is then written back to a register or memory location, or used as part of a subsequent computation.
+  • For instructions that interact with memory (load/store), the memory addressing unit calculates the effective address and performs read or write operations.
+
+3. Role of Registers
+
+Registers are small, fast storage locations within the CPU used to hold data and intermediate results:
+ • General-purpose registers store operands, temporary results, and pointers.

@@ -1,0 +1,57 @@
+**Step‑by‑step reasoning**
+
+1. **Who can be at the ends?**  
+   - Eve must be at an end (clue 4).  
+   - Bob cannot be at an end (clue 1).  
+   - Therefore the two ends are **Eve** and one of {Alice, Carol, Dave}.
+
+2. **Bob must be in the middle of three consecutive seats** because he needs a neighbor on each side (clue 3).  
+   - In a row of 5 chairs the only positions that have two neighbours are the 2nd, 3rd and 4th seats.  
+   - So Bob occupies seat 2, 3 or 4.
+
+3. **Alice must be somewhere to the left of Dave** (clue 2).  
+   - This only tells us the relative order, not exact positions.
+
+4. **There is exactly one person between Alice and Carol** (clue 5).  
+   - Hence the seats of Alice and Carol are two apart:  
+     - either (Alice, _ , Carol) or (Carol, _ , Alice).
+
+5. **Combine the “exactly one between” with Bob’s adjacency to Carol** (clue 3).  
+   - Since Bob must sit next to Carol, Bob must be the single person between Alice and Carol.  
+   - Therefore the three‑person block must be **Alice – Bob – Carol** (or the reverse, but the reverse would put Bob at an end, which is impossible).  
+   - Consequently Alice and Carol are at the two outer positions of this block, with Bob in the middle.
+
+6. **Place the block in the row.**  
+   - The only way for Bob not to be at an end is to have the block occupy seats **2‑3‑4**:  
+     - Seat 2 = Alice, Seat 3 = Bob, Seat 4 = Carol  
+     - or Seat 2 = Carol, Seat 3 = Bob, Seat 4 = Alice.  
+   - The latter would put Alice to the right of Bob, violating clue 2 (Alice must be left of Dave).  
+   - Hence the only viable arrangement is **Alice – Bob – Carol** in seats 2, 3, 4.
+
+7. **Determine the remaining ends.**  
+   - The two remaining seats are 1 and 5.  
+   - One of them must be Eve (clue 4).  
+   - The other must be Dave (the only person left).  
+   - Since Alice must be left of Dave (clue 2), Dave cannot be in seat 1 (that would place him left of Alice).  
+   - Therefore Dave must be in seat 5 and Eve must be in seat 1.
+
+8. **Write the full order (left → right).**  
+
+   | Seat | Person |
+   |------|--------|
+   | 1    | Eve    |
+   | 2    | Alice  |
+   | 3    | Bob    |
+   | 4    | Carol  |
+   | 5    | Dave   |
+
+   This arrangement satisfies every clue:
+   - Bob (seat 3) is not at an end.  
+   - Alice (seat 2) is left of Dave (seat 5).  
+   - Carol (seat 4) is immediately next to Bob (seat 3).  
+   - Eve (seat 1) is at an end.  
+   - Exactly one person (Bob) sits between Alice (seat 2) and Carol (seat 4).
+
+**Final seating order from left to right:**  
+
+**Eve – Alice –

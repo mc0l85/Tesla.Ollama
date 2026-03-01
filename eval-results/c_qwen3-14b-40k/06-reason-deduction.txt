@@ -1,0 +1,125 @@
+We are given a logic puzzle with 5 people (Alice, Bob, Carol, Dave, Eve) and 5 clues. Our goal is to determine the seating order **from left to right**.
+
+---
+
+### **Clues Recap:**
+
+1. **Bob is not at either end.**
+2. **Alice is somewhere to the left of Dave.**
+3. **Carol is immediately next to Bob.**
+4. **Eve is at one of the ends.**
+5. **There is exactly one person between Alice and Carol.**
+
+---
+
+We'll denote positions from left to right as positions **1 to 5**.
+
+---
+
+### **Step 1: Use Clue 4 (Eve is at one of the ends)**
+
+- Eve is in **position 1** or **position 5**.
+
+---
+
+### **Step 2: Use Clue 1 (Bob is not at either end)**
+
+- Bob is in **positions 2, 3, or 4**.
+
+---
+
+### **Step 3: Use Clue 3 (Carol is immediately next to Bob)**
+
+- So Carol must be in a position **adjacent to Bob**, i.e., Bob and Carol are in consecutive positions.
+
+---
+
+### **Step 4: Use Clue 5 (Exactly one person between Alice and Carol)**
+
+- So Alice and Carol are separated by **one person**.
+- That means they are in positions like:
+  - Alice in **1**, Carol in **3**
+  - Alice in **2**, Carol in **4**
+  - Alice in **3**, Carol in **5**
+  - Or in the other direction:
+  - Alice in **3**, Carol in **1**
+  - Alice in **4**, Carol in **2**
+  - Alice in **5**, Carol in **3**
+
+---
+
+### **Step 5: Use Clue 2 (Alice is somewhere to the left of Dave)**
+
+- So **Alice < Dave** in terms of position.
+
+---
+
+Now, we'll try to find a configuration that satisfies all clues.
+
+---
+
+## **Try: Eve in position 1**
+
+From Clue 4: ✅
+
+So positions are:
+
+1: Eve  
+2: ?  
+3: ?  
+4: ?  
+5: ?
+
+Now, Bob is not in position 1 or 5 (Clue 1), so possible positions: 2, 3, or 4.
+
+Let’s try **Bob in position 3**.
+
+Then, from Clue 3 (Carol is immediately next to Bob): Carol is in **2 or 4**.
+
+Try **Carol in 2**.
+
+So far:
+
+1: Eve  
+2: Carol  
+3: Bob  
+4: ?  
+5: ?
+
+Now, use Clue 5 (Exactly one person between Alice and Carol)
+
+Carol is in **2**, so Alice must be in **4** (one person between 2 and 4: position 3).
+
+So Alice is in **4**.
+
+Now we have:
+
+1: Eve  
+2: Carol  
+3: Bob  
+4: Alice  
+5: ?
+
+Only person left is **Dave**, who must be in **5**.
+
+Now check Clue 2: Alice is to the **left of Dave**.
+
+- Alice is in **4**, Dave is in **5** → ✅
+
+So this configuration works!
+
+---
+
+### ✅ Final Seating Order (Left to Right):
+
+1. **Eve**  
+2. **Carol**  
+3. **Bob**  
+4. **Alice**  
+5. **Dave**
+
+---
+
+### ✅ Answer:
+
+**Eve, Carol, Bob, Alice, Dave** ✅

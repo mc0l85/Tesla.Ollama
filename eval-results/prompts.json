@@ -1,0 +1,71 @@
+{
+  "generated": "2026-03-01T00:20:37.827281",
+  "tests": [
+    {
+      "id": "01-instruct-format",
+      "num_predict": 500,
+      "endpoint": "chat",
+      "prompt": "List exactly 5 benefits of drinking water. Number them 1-5. Each benefit must be exactly one sentence. Do not include any introduction or conclusion. Do not use bold or italic formatting."
+    },
+    {
+      "id": "02-instruct-conditional",
+      "num_predict": 500,
+      "endpoint": "chat",
+      "prompt": "What is the capital of France? Answer with ONLY the city name if it has more than 5 letters, or the city name followed by its population if it has 5 or fewer letters. No other text."
+    },
+    {
+      "id": "03-code-write",
+      "num_predict": 800,
+      "endpoint": "chat",
+      "prompt": "Write a Python function called `merge_sorted` that takes two sorted lists of integers and returns a single sorted list. Do not use the built-in `sorted()` function or `.sort()` method. Include a docstring and two assert-based test cases."
+    },
+    {
+      "id": "04-code-debug",
+      "num_predict": 800,
+      "endpoint": "chat",
+      "prompt": "This Python function has a bug. Find it, explain what's wrong, and provide the corrected version.\n\n```python\ndef flatten(nested_list):\n    result = []\n    for item in nested_list:\n        if type(item) == list:\n            result.extend(flatten(item))\n        else:\n            result.append(item)\n    return result\n\n# Should work for any iterable nesting, but fails:\nprint(flatten([1, (2, 3), [4, [5]]]))  # Expected: [1, 2, 3, 4, 5]\n```"
+    },
+    {
+      "id": "05-reason-logic",
+      "num_predict": 600,
+      "endpoint": "chat",
+      "prompt": "A farmer has 3 fields. Field A produced twice as much wheat as Field B. Field C produced 10 tons more than Field B. The total harvest was 110 tons. How many tons did each field produce? Show your reasoning step by step."
+    },
+    {
+      "id": "06-reason-deduction",
+      "num_predict": 800,
+      "endpoint": "chat",
+      "prompt": "Five people (Alice, Bob, Carol, Dave, Eve) sit in a row of 5 chairs. Determine the seating order from left to right given these clues:\n1. Bob is not at either end.\n2. Alice is somewhere to the left of Dave.\n3. Carol is immediately next to Bob.\n4. Eve is at one of the ends.\n5. There is exactly one person between Alice and Carol."
+    },
+    {
+      "id": "07-creative",
+      "num_predict": 800,
+      "endpoint": "chat",
+      "prompt": "Write a short story (250-350 words) about an astronaut who discovers that the stars are not what they seem. The story must have a clear beginning, middle, and end. Use vivid sensory details. The tone should be unsettling, not hopeful."
+    },
+    {
+      "id": "08-summarize",
+      "num_predict": 500,
+      "endpoint": "chat",
+      "prompt": "Summarize the following passage in exactly 3 bullet points. Each bullet should capture a distinct key idea.\n\nPassage: \"The development of CRISPR-Cas9 gene editing technology has revolutionized molecular biology. Originally discovered as a bacterial immune system that defends against viruses, researchers Jennifer Doudna and Emmanuelle Charpentier demonstrated in 2012 that this system could be reprogrammed to cut DNA at specific locations. This breakthrough earned them the 2020 Nobel Prize in Chemistry. CRISPR has since been applied to agriculture, creating disease-resistant crops; to medicine, with the first FDA-approved CRISPR therapy for sickle cell disease in 2023; and to basic research, allowing scientists to systematically study gene function. However, ethical concerns persist, particularly regarding germline editing \u2014 modifications that would be inherited by future generations. The 2018 case of He Jiankui, who created the first gene-edited babies in China, sparked international condemnation and calls for stricter regulation. Despite these concerns, investment in CRISPR-based startups exceeded $5 billion in 2023, signaling strong commercial confidence in the technology's therapeutic potential.\""
+    },
+    {
+      "id": "09-structured-json",
+      "num_predict": 500,
+      "endpoint": "chat",
+      "prompt": "Generate a JSON object representing a bookstore inventory with exactly 3 books. Each book must have these fields: \"title\" (string), \"author\" (string), \"year\" (integer), \"price\" (float with 2 decimal places), \"genres\" (array of strings), \"in_stock\" (boolean). Output ONLY valid JSON, no markdown code fences, no explanation."
+    },
+    {
+      "id": "10-long-output",
+      "num_predict": 1500,
+      "endpoint": "chat",
+      "prompt": "Explain how a CPU executes a program, from loading the binary to completing execution. Cover: loading into memory, the fetch-decode-execute cycle, registers, the role of the ALU, branching, and how the program terminates. Be technical and detailed. Aim for approximately 800 words."
+    },
+    {
+      "id": "11-tool-call",
+      "num_predict": 500,
+      "endpoint": "tool",
+      "prompt": "What is the current weather in Tokyo, Japan?"
+    }
+  ]
+}

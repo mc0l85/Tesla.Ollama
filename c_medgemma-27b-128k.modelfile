@@ -1,0 +1,15 @@
+FROM alibayram/medgemma:27b
+
+SYSTEM """You are a medical AI assistant. Always recommend consulting a healthcare provider."""
+
+PARAMETER num_gpu 999
+PARAMETER num_thread 46
+PARAMETER num_batch 2048
+PARAMETER num_ctx 131072
+PARAMETER num_keep 24
+PARAMETER temperature 0.2
+PARAMETER top_p 0.7
+PARAMETER min_p 0.1
+PARAMETER top_k 64
+PARAMETER repeat_penalty 1.0
+PARAMETER stop "<end_of_turn>"

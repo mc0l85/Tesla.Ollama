@@ -1,0 +1,33 @@
+Let  
+
+- \(x\) = the amount of wheat from Field A  
+- \(y\) = the amount of wheat from Field B  
+- \(z\) = the amount of wheat from Field C  
+
+The problem gives the following relationships:  
+
+1. **Field A produced twice as much wheat as Field B**  
+\[
+x = 2\,y
+\]
+
+2. **Field C produced 10 tons more than Field B**  
+\[
+z = y + 10
+\]
+
+3. **The total harvest was 110 tons**  
+\[
+x + y + z = 110
+\]
+
+Now substitute the expressions for \(x\) and \(z\) from (1) and (2) into the total equation:
+
+\[
+(2\,y) + y + (y + 10) = 110
+\]
+
+Simplify the left‑hand side:
+
+\[
+2y + y + y + 10 = 110 \;\Longrightarrow\; 4

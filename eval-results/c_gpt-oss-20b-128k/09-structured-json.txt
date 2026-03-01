@@ -1,0 +1,51 @@
+[FROM THINKING FIELD]
+We need to generate a JSON object. The output should be only JSON, no markdown. Provide exactly 3 books. Each has fields: "title", "author", "year", "price", "genres", "in_stock". Provide 3 books with sample data. Ensure correct types: strings for title, author; year as number; price as float with 2 decimals. Also "genres" array of strings. The JSON must be valid. Provide something like:
+
+{
+  "books": [
+    {
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "year": 1925,
+      "price": 10.99,
+      "genres": ["Classic", "Fiction"],
+      "in_stock": true
+    },
+    ...
+  ]
+}
+
+But we need to ensure proper JSON: property names inside object: "title": "The Great Gatsby". Also we need to ensure that the array of books is an array. Provide 3 books. Also we need to ensure that we use correct quoting. Provide 3 books. Let's produce something like:
+
+{
+  "books": [
+    {
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "year": 1925,
+      "price": 9.99,
+      "genres": ["Classic", "Fiction"],
+      "in_stock": true
+    },
+    {
+      "title": "To Kill a Mockingbird",
+      "author": "Harper Lee",
+      "year": 1960,
+      "price": 12.50,
+      "genres": ["Classic", "Historical"],
+      "in_stock": false
+    },
+    {
+      "title": "1984",
+      "author": "George Orwell",
+      "year": 1949,
+      "price": 14.75,
+      "genres": ["Dystopian", "Political"],
+      "in_stock": true
+    }
+  ]
+}
+
+But we need to correct some quoting: "author" string. We need to ensure that "author" field is a string. Also "year" is number. Also "price" is number. And "genres" array of strings. Also "in_stock" boolean.
+
+Also we need to ensure that each array element is an object. Provide 3 books. Use "title" string. Provide 3 books. Let's produce final output. Ensure

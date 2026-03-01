@@ -1,0 +1,1 @@
+{"model":"c_gpt-oss-20b-128k","created_at":"2026-03-01T05:56:27.539960721Z","message":{"role":"assistant","content":""},"done":true,"done_reason":"length","total_duration":17302373682,"load_duration":231340026,"prompt_eval_count":162,"prompt_eval_duration":175776378,"eval_count":800,"eval_duration":16311632921}

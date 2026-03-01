@@ -1,0 +1,75 @@
+**Step‑by‑step analysis**
+
+1. **What the function is supposed to do**  
+   `flatten` should take a nested collection (lists, tuples, etc.) and return a *single* flat list that contains every non‑list element in the original order.
+
+2. **Current implementation**  
+
+   ```python
+   def flatten(nested_list):
+       result = []
+       for item in nested_list:
+           if type(item) == list:          # <-- only checks for `list`
+               result.extend(flatten(item))
+           else:
+               result.append(item)
+       return result
+   ```
+
+   The crucial line is  
+
+   ```python
+   if type(item) == list:
+   ```
+
+   It **explicitly tests for the type `list` only**. Anything that is *not* a `list` (including tuples, sets, strings, custom containers, etc.) falls into the `else` branch and is appended unchanged.
+
+3. **Why it fails on the given example**  
+
+   ```python
+   print(flatten([1, (2, 3), [4, [5]]]))
+   ```
+
+   * The outer container is a list, so the loop runs.
+   * The first element `1` is not a `list` → it is appended → OK.
+   * The second element `(2, 3)` **is a tuple**, not a `list`.  
+     The condition `type(item) == list` is `False`, so the `else` branch executes and the whole tuple is appended as a single element.  
+     The expected output wants the two numbers `2` and `3` to be extracted, not the tuple itself.
+   * Because the tuple is kept intact, the recursive call never sees the inner list `[5]` (or the numbers inside the tuple), and the final result contains the tuple `(2, 3)` as an element.
+
+   Hence the function returns something like  
+
+   ```python
+   [1, (2, 3), 4, 5]
+   ```
+
+   which is **not** the desired `[1, 2, 3, 4, 5]`.
+
+4. **What the bug actually is**  
+   The function assumes that *only* objects of type `list` can contain further nested iterables. It does **not** treat other iterable containers (e.g., tuples, sets, strings) as something that should be traversed recursively. Consequently, nested non‑list iterables are treated as atomic values, breaking the intended flattening behavior.
+
+5. **How to fix it**  
+   We need to recurse on *any* container that is itself iterable **and** is not a scalar (i.e., not a string/bytes). The most common, safe way is:
+
+   * Check whether the object is an instance of `collections.abc.Iterable`.
+   * Exclude `str` and `bytes` because they are iterable but should be treated as atomic values.
+   * Recurse on those iterables; otherwise, append the element.
+
+   This can be done with `isinstance(item, Iterable)` from the `collections.abc` module, or simply by checking `isinstance(item, (list, tuple))` if we only care about lists and tuples. The broader solution works for any iterable type.
+
+6. **Corrected implementation**
+
+   ```python
+   from collections.abc import Iterable
+
+   def flatten(nested):
+       """
+       Flatten an arbitrarily nested iterable (lists, tuples, etc.) into a
+       single list of non‑iterable elements, preserving order.
+
+       Example
+       -------
+       >>> flatten([1, (2, 3), [4, [5]]])
+       [1, 2, 3, 4, 5]
+       """
+       flat

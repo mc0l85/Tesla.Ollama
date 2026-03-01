@@ -1,0 +1,83 @@
+**How a CPU Executes a Program – From Binary Loading to Termination**
+
+---
+
+### 1. From Binary File to Executable Image  
+
+When a program is built, the compiler/linker produces an **executable file** (e.g., ELF on Linux, PE on Windows). This file contains more than just raw machine code; it also carries metadata that tells the operating system (OS) how to lay the program out in memory.
+
+1. **Sections and Segments** – The binary is divided into sections such as `.text` (executable code), `.data` (initialized global variables), `.bss` (uninitialized globals), `.rodata` (read‑only constants), and `.stack` (initial stack space). Each section has a **virtual address** and a **size**.  
+2. **Program Header / Segment Table** – The executable format includes a table that maps each section to a **type** (LOAD, PROGBITS, NOTE, etc.) and a **file offset**. The OS loader reads this table to know where each piece of the file must be copied.  
+3. **Relocation Information** – Addresses inside the binary may refer to symbols that are defined elsewhere (e.g., calls to library functions). Relocation entries contain the offsets that must be patched once the final load addresses are known.  
+4. **Dynamic Linking Metadata** – For dynamically linked programs, the loader also reads the **dynamic section** (e.g., `.dynsym`, `.dynstr`) to locate shared libraries and resolve symbols at run‑time.
+
+The **loader** (part of the OS kernel or a user‑space loader in embedded systems) performs the following steps:
+
+- **Map virtual address space** – Reserve regions of the process’s address space for code, data, stack, and any mapped libraries.  
+- **Copy file contents** – Use `mmap`/`mmap` or `read`+`protect` to copy each LOAD segment from the executable file into the corresponding virtual pages.  
+- **Apply relocations** – Adjust any address references that need to be relocated to their final virtual addresses.  
+- **Initialize globals** – Zero‑fill `.bss` and copy initialized data from `.data`.  
+- **Set up the initial CPU context** – Prepare the instruction pointer (PC) to point at the entry point defined in the program header (`e_entry` in ELF) and set up the stack pointer (SP) to a known location.
+
+At this point the binary is **in memory** and the CPU is ready to start fetching instructions.
+
+---
+
+### 2. The Fetch‑Decode‑Execute Cycle  
+
+The core of CPU execution is the **instruction cycle**, traditionally broken into three stages:
+
+1. **Fetch** – The CPU reads the next instruction from memory.  
+   - The **Program Counter (PC)** holds the address of the current instruction.  
+   - The **Instruction Cache** (or the memory hierarchy) supplies the byte(s) that encode the opcode and its operands.  
+   - On a modern pipeline, fetch may be speculative, prefetching several instructions ahead.
+
+2. **Decode** – The control unit interprets the opcode and any immediate fields, determines the operation type (e.g., load, arithmetic, branch), and identifies the required operands and destination registers.  
+   - The decoder may produce micro‑ops (µops) that are fed into the **out‑of‑order execution engine** or the **pipeline stages**.
+
+3. **Execute** – The appropriate execution unit performs the operation.  
+   - **ALU** (Arithmetic‑Logic Unit) handles integer arithmetic, logical operations, and address calculations.  
+   - **FPU** (Floating‑Point Unit) deals with floating‑point instructions.  
+   - **Load/store units** interact with the **cache hierarchy** to fetch or write data.  
+   - **Branch predictor** may speculatively fetch target instructions if a conditional branch is taken.
+
+These stages are typically **pipelined**: while one instruction is being executed, the next is being decoded, and the following one is being fetched. The depth of the pipeline varies by architecture (e.g., 5‑stage classic RISC, 14‑stage superscalar pipelines).
+
+---
+
+### 3. Registers – The CPU’s Immediate Workspace  
+
+Registers are ultra‑fast storage locations integrated into the core. Their roles are crucial for performance:
+
+- **General‑Purpose Registers (GPRs)** – Used by the compiler to hold temporaries, function arguments, and return values. Their number and naming differ (e.g., x86‑64 has RAX, RBX, RCX, …; ARM64 has x0‑x30).  
+- **Instruction Pointer (IP) / Program Counter (PC)** – Holds the address of the next instruction to fetch.  
+- **Status Flags / Condition Code Register** – Bits reflecting the outcome of the last arithmetic/logic operation (zero, carry, overflow, etc.) used by branch instructions.  
+- **Stack Pointer (SP)** – Points to the top of the call stack; used implicitly by `push/pop` and subroutine calls.  
+- **Base Pointer (BP / RBP)** – Often used to reference the current stack frame’s base address.  
+- **Special Purpose Registers** – Include the **flags register**, **control registers** (e.g., CR0‑CR4 on x86), **model‑specific registers (MSRs)**, and **debug registers**.  
+
+The compiler emits **register allocation** strategies to keep frequently accessed data in registers, minimizing memory traffic.
+
+---
+
+### 4. The ALU – Core of Computation  
+
+The **Arithmetic‑Logic Unit (ALU)** is the computational heart of the CPU. It performs:
+
+- Integer addition/subtraction (including carry/borrow).  
+- Logical operations (AND, OR, XOR, NOT).  
+- Bit‑shifts and rotates.  
+- Comparison operations that set condition flags.
+
+In a superscalar or out‑of‑order core, multiple ALUs can operate in parallel. The ALU receives its operands from registers or from the **load/store unit** after a memory fetch. The result is written back to a destination register or to memory, depending on the instruction.
+
+Floating‑point operations are typically offloaded to a **Floating‑Point Unit (FPU)** or an **SIMD unit** (SSE, AVX, NEON). These units implement IEEE‑754 arithmetic and may have their own dedicated pipelines.
+
+---
+
+### 5. Branching and Control Flow  
+
+Branching changes the normal sequential flow of execution. Important concepts:
+
+- **Conditional Branches** – Instructions like `JZ`, `JNE`, `CMP/JE` on x86, or `B.eq` on ARM. They use condition flags to decide whether to jump to a target address.  
+- **Unconditional Jumps** – `JMP`, `BR`, `BRX` – always transfer

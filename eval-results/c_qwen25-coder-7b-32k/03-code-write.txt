@@ -1,0 +1,22 @@
+```python
+def merge_merge(list1, list2):
+ 
+       result = []
+          while list1 and list2:
+:
+        if not list1:
+:
+            result.append(list2.pop(0))
+        elif not list2:
+                       result.append(list1.pop(0))
+        elif list1[0] < list2[0]:
+ 
+            result.append(list10.pop(0)
+        else:
+ 
+                       result.append(list2.pop(0)
+    returnreturn result
+
+
+
+#assert sort_merge([111,11([([([([([([([([([([([([([([([([([([([([([([([([([([([([([([([

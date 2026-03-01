@@ -1,0 +1,27 @@
+Let's denote the amount of wheat produced by Field B as \( x \) tons.
+
+According to the problem:
+- Field A produced twice as much wheat as Field B, so Field A produced \( 2x \) tons.
+- Field C produced 10 tons more than Field B, so Field C produced \( x + 10 \) tons.
+- The total harvest from all three fields is 110 tons.
+
+We can set up the following equation to represent the total harvest:
+\[ x + 2x + (x + 10) = 110 \]
+
+Simplifying the equation:
+\[ 4x + 10 = 110 \]
+
+Subtract 10 from both sides:
+\[ 4x = 100 \]
+
+Divide by 4:
+\[ x = 25 \]
+
+So, Field B produced 25 tons of wheat.
+- Field A produced \( 2x = 2 \times 25 = 50 \) tons.
+- Field C produced \( x + 10 = 25 + 10 = 35 \) tons.
+
+Thus, the production is:
+- Field A: 50 tons
+- Field B: 25 tons
+- Field C: 35 tons

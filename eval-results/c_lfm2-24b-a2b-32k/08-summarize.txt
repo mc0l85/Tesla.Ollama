@@ -1,0 +1,3 @@
+- **Scientific Breakthrough**: CRISPR-Cas9, originally a bacterial defense mechanism, was repurposed by Doudna and Charpentier (2020 Nobel Prize) to enable precise DNA editing, transforming research and medicine.  
+- **Diverse Applications & Ethical Challenges**: Used in agriculture, FDA-approved therapies (e.g., sickle cell disease), and gene function studies, but raises concerns over germline editing and the 2018 He Jiankui scandal.  
+- **Commercial Growth & Regulation**: Despite ethical debates, $5B+ invested in CRISPR startups (2023) highlights strong commercial confidence in its therapeutic potential.

@@ -1,0 +1,3 @@
+NO TOOL CALLS DETECTED
+Model responded with text instead:
+```current for Tokyo

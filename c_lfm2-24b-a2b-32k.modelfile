@@ -1,0 +1,15 @@
+FROM lfm2:24b-a2b
+
+SYSTEM """You are a helpful AI assistant."""
+
+PARAMETER num_gpu 999
+PARAMETER num_thread 46
+PARAMETER num_batch 2048
+PARAMETER num_ctx 32768
+PARAMETER num_keep 24
+PARAMETER num_predict 16384
+PARAMETER temperature 0.1
+PARAMETER top_k 50
+PARAMETER top_p 0.95
+PARAMETER min_p 0.05
+PARAMETER repeat_penalty 1.05

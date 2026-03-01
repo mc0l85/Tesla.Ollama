@@ -1,0 +1,11 @@
+FROM gpt-oss:20b
+
+SYSTEM """You are ChatGPT, a large language model trained by OpenAI. You are designed for powerful reasoning and agentic tasks. Reasoning: high"""
+
+PARAMETER num_gpu 999
+PARAMETER num_thread 46
+PARAMETER num_batch 2048
+PARAMETER num_ctx 131072
+PARAMETER temperature 1.0
+PARAMETER top_p 0.9
+PARAMETER repeat_penalty 1.1

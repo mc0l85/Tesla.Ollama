@@ -1,0 +1,5 @@
+Here's a 3-bullet point summary of the passage:
+
+* **CRISPR-Cas9 is a revolutionary gene editing tool:** Originally a bacterial defense mechanism, it was adapted to precisely edit DNA, earning its discoverers a Nobel Prize and transforming fields like biology and medicine.
+* **CRISPR has diverse and rapidly growing applications:** From disease-resistant crops to the first FDA-approved gene therapy for sickle cell disease, the technology is seeing practical use across agriculture, medicine, and research.
+* **Ethical concerns and regulation are crucial considerations:** While promising, CRISPR raises ethical dilemmas – especially regarding heritable changes – highlighted by the controversial case of gene-edited babies, prompting calls for responsible development and oversight.

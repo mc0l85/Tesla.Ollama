@@ -1,0 +1,26 @@
+[
+  {
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald",
+    "year": 1925,
+    "price": 12.99,
+    "genres": ["Classic", "Fiction"],
+    "in_stock": true
+  },
+  {
+    "title": "Sapiens",
+    "author": "Yuval Noah Harari",
+    "year": 2011,
+    "price": 24.50,
+    "genres": ["History", "Science"],
+    "in_stock": false
+  },
+  {
+    "title": "The Hobbit",
+    "author": "J.R.R. Tolkien",
+    "year": 1937,
+    "price": 8.75,
+    "genres": ["Fantasy", "Adventure"],
+    "in_stock": true
+  }
+]

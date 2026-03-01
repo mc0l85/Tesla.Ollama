@@ -1,0 +1,30 @@
+```json
+{
+  "inventory": [
+    {
+      "title": "The Martian",
+      "author": "Andy Weir",
+      "year": 2011,
+      "price": 9.99,
+      "genres": ["Science Fiction", "Thriller"],
+      "in_stock": true
+    },
+    {
+      "title": "Pride and Prejudice",
+      "author": "Jane Austen",
+      "year": 1813,
+      "price": 7.50,
+      "genres": ["Classic", "Romance"],
+      "in_stock": false
+    },
+    {
+      "title": "To Kill a Mockingbird",
+      "author": "Harper Lee",
+      "year": 1960,
+      "price": 12.50,
+      "genres": ["Classic", "Fiction", "Drama"],
+      "in_stock": true
+    }
+  ]
+}
+```

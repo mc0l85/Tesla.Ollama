@@ -1,0 +1,9 @@
+Let's denote the amount of wheat produced by Field B as \( x \)ons.
+
+From the problem:
+ 
+1. Field A produced twice as much wheat as Field B,
+
+ A =  2  2x x x
+
+ 2x B  2x B B B B  B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B

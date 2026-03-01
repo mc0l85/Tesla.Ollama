@@ -1,0 +1,1 @@
+{"model": "c_medgemma-27b-128k", "messages": [{"role": "user", "content": "List exactly 5 benefits of drinking water. Number them 1-5. Each benefit must be exactly one sentence. Do not include any introduction or conclusion. Do not use bold or italic formatting."}], "stream": false, "think": false, "options": {"num_predict": 500}}

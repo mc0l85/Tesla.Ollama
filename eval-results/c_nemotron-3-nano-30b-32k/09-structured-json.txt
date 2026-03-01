@@ -1,0 +1,26 @@
+{
+  "book1": {
+    "title": "The Midnight Library",
+    "author": "Matt Haig",
+    "year": 2020,
+    "price": 14.99,
+    "genres": ["fiction", "philosophy"],
+    "in_stock": true
+  },
+  "book2": {
+    "title": "Educated",
+    "author": "Tara Westover",
+    "year": 2018,
+    "price": 17.50,
+    "genres": ["memoir", "education"],
+    "in_stock": true
+  },
+  "book3": {
+    "title": "Project Hail Mary",
+    "author": "Andy Weir",
+    "year": 2021,
+    "price": 18.75,
+    "genres": ["science fiction", "adventure"],
+    "in_stock": false
+  }
+}

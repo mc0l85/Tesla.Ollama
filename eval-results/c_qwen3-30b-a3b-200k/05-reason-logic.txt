@@ -1,0 +1,9 @@
+Let’s solve the problem step by step using algebra.
+
+---
+
+### Step 1: Define Variables
+Let $ x $ represent the amount of wheat (in tons) produced by **Field B**.
+
+- **Field A** produced **twice as much as Field B**, so it produced $ 2x $ tons.
+- **Field C** produced **10 tons more than Field B**,
